@@ -29,11 +29,15 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Nur Azizah Tasya Putri","alternateName":"Tasya Putri","jobTitle":"Social Media Specialist","url":"https://tasya-putri.github.io/","image":"https://tasya-putri.github.io/assets/images/tasya.png","address":{"@type":"PostalAddress","addressLocality":"Jakarta","addressCountry":"ID"},"sameAs":["https://linkedin.com/in/nurazizahtasyaputri"]}</script>
 <script>
 (function(){var d=document.documentElement;d.classList.add('js');
+try{var q0=location.search,mt=q0.match(/[?&]theme=(dark|light)/),ml=q0.match(/[?&]lang=(id|en)/);
+var th=mt?mt[1]:(localStorage.getItem('theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'));
+d.setAttribute('data-theme',th);
+d.lang=ml?ml[1]:(localStorage.getItem('lang')||((navigator.language||'en').toLowerCase().indexOf('id')===0?'id':'en'));}catch(e){d.setAttribute('data-theme','light');d.lang='en';}
 if(/qa/.test(location.search)){var st=document.createElement('style');st.textContent='*,*::before,*::after{animation:none!important;transition:none!important}';d.appendChild(st);}
 var q=location.search;
 if(/noanim/.test(q)){d.classList.add('ready');return;}
 if(/qa/.test(q)){d.classList.add('ready');return;}
-try{if(!sessionStorage.getItem('introSeen')&&!matchMedia('(prefers-reduced-motion: reduce)').matches)d.classList.add('intro-on')}catch(e){}})();
+if(!matchMedia('(prefers-reduced-motion: reduce)').matches)d.classList.add('intro-on');})();
 </script>
 <style>
 :root{
@@ -43,12 +47,13 @@ try{if(!sessionStorage.getItem('introSeen')&&!matchMedia('(prefers-reduced-motio
   --display:'Fraunces',Georgia,'Times New Roman',serif;
   --body:'Nunito',ui-rounded,'SF Pro Rounded',system-ui,-apple-system,'Segoe UI',sans-serif;
   --r:28px;--ease:cubic-bezier(.2,.8,.2,1);--spring:cubic-bezier(.34,1.56,.64,1);
+  --sh:#2B1B3A;--deep:#2B1B3A;--on-deep:#FFF8EF;--deep2:#E6DCF1;color-scheme:light;
 }
 *,*::before,*::after{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%;scroll-padding-top:104px;overflow-x:clip}
 @media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
 body{margin:0;background:var(--cream);color:var(--ink);font:400 1.0625rem/1.65 var(--body);overflow-x:hidden;
-  background-image:radial-gradient(rgba(43,27,58,.07) 1px,transparent 1.4px);background-size:22px 22px}
+  background-image:radial-gradient(color-mix(in srgb,var(--ink) 7%,transparent) 1px,transparent 1.4px);background-size:22px 22px}
 .intro-on,.intro-on body{overflow:hidden}
 img,svg{display:block;max-width:100%}
 a{color:inherit}
@@ -72,7 +77,7 @@ button{font:inherit;color:inherit;cursor:pointer}
 .js.ready .mask>span{transform:none;transition:transform 1s var(--ease);transition-delay:var(--dl,0s)}
 
 /* ---------- nav ---------- */
-.nav{position:sticky;top:12px;z-index:50;margin:12px auto 0;width:min(1180px,100% - 24px);border-radius:34px;background:rgba(255,253,248,.84);backdrop-filter:saturate(1.5) blur(16px);-webkit-backdrop-filter:saturate(1.5) blur(16px);border:2px solid var(--ink);box-shadow:4px 5px 0 var(--ink)}
+.nav{position:sticky;top:12px;z-index:50;margin:12px auto 0;width:min(1180px,100% - 24px);border-radius:34px;background:color-mix(in srgb,var(--paper) 88%,transparent);backdrop-filter:saturate(1.5) blur(16px);-webkit-backdrop-filter:saturate(1.5) blur(16px);border:2px solid var(--ink);box-shadow:4px 5px 0 var(--sh)}
 .nav .wrap{display:flex;align-items:center;gap:14px;width:auto;margin-inline:18px}
 .nav .wrap:first-child{min-height:62px}
 .brand{display:flex;align-items:center;gap:12px;text-decoration:none;font-family:var(--display);font-weight:600;font-size:1.2rem;letter-spacing:-.01em}
@@ -88,16 +93,16 @@ button{font:inherit;color:inherit;cursor:pointer}
 .menu a:hover,.menu a[aria-current="true"]{background:var(--blush);color:var(--ink)}
 .menu a.cta{background:var(--ink);color:var(--cream);margin-left:6px}
 .menu a.cta:hover{background:var(--coral);color:var(--ink)}
-.burger{margin-left:auto;width:46px;height:46px;border-radius:50%;border:1.5px solid var(--ink);background:transparent;display:grid;place-items:center}
+.burger{margin-left:0;width:46px;height:46px;border-radius:50%;border:1.5px solid var(--ink);background:transparent;display:grid;place-items:center}
 .burger .ico{width:22px;height:22px}
 .mmenu{display:none;padding:0 0 16px}
 .mmenu.open{display:grid;gap:4px}
-.mmenu a{padding:12px 16px;border-radius:16px;text-decoration:none;font-weight:700;background:var(--paper);border:1px solid rgba(43,27,58,.1)}
+.mmenu a{padding:12px 16px;border-radius:16px;text-decoration:none;font-weight:700;background:var(--paper);border:1px solid color-mix(in srgb,var(--ink) 1%,transparent)}
 @media (min-width:980px){.menu{display:flex}.burger,.mmenu{display:none!important}}
 
 /* ---------- buttons / chips ---------- */
 .btn{display:inline-flex;align-items:center;gap:10px;padding:14px 24px;border-radius:99px;font-weight:800;text-decoration:none;border:2px solid var(--ink);background:var(--paper);color:var(--ink);transition:transform .25s var(--spring),background .2s,box-shadow .2s;min-height:50px}
-.btn:hover{transform:translate(var(--mx,0px),calc(var(--my,0px) - 3px)) rotate(-1deg);box-shadow:4px 5px 0 var(--ink)}
+.btn:hover{transform:translate(var(--mx,0px),calc(var(--my,0px) - 3px)) rotate(-1deg);box-shadow:4px 5px 0 var(--sh)}
 .btn.primary{background:var(--coral)}
 .btn.dark{background:var(--ink);color:var(--cream)}
 .btn.dark:hover{box-shadow:4px 5px 0 var(--coral)}
@@ -105,7 +110,7 @@ button{font:inherit;color:inherit;cursor:pointer}
 .chip::before{content:"#";color:var(--coral-d);font-weight:800}
 .chip.l{background:var(--lilac)}.chip.l::before{color:var(--lilac-d)}
 .chip.b{background:var(--butter)}.chip.b::before{color:var(--coral-d)}
-.chip.p{background:var(--paper);border:1.5px solid rgba(43,27,58,.18)}
+.chip.p{background:var(--paper);border:1.5px solid color-mix(in srgb,var(--ink) 18%,transparent)}
 .chips{display:flex;flex-wrap:wrap;gap:8px}
 .eyebrow{display:inline-flex;align-items:center;gap:8px;font-weight:800;font-size:.85rem;letter-spacing:.12em;text-transform:uppercase;color:var(--lilac-d)}
 .eyebrow::before{content:"";width:30px;height:2px;background:currentColor}
@@ -127,7 +132,7 @@ section{padding:clamp(4.5rem,11vw,9rem) 0;position:relative}
 @keyframes drift{to{transform:translate3d(5vmax,3vmax,0) scale(1.14)}}
 .hero .wrap{display:grid;gap:clamp(2.4rem,5vw,4rem);align-items:center}
 @media (min-width:900px){.hero .wrap{grid-template-columns:1.08fr .92fr}}
-.loc{display:inline-flex;align-items:center;gap:8px;padding:7px 15px 7px 12px;border-radius:99px;background:var(--paper);border:1.5px solid rgba(43,27,58,.16);font-weight:700;font-size:.92rem}
+.loc{display:inline-flex;align-items:center;gap:8px;padding:7px 15px 7px 12px;border-radius:99px;background:var(--paper);border:1.5px solid color-mix(in srgb,var(--ink) 16%,transparent);font-weight:700;font-size:.92rem}
 .loc .ico{width:18px;height:18px;color:var(--coral-d)}
 .name{font-family:var(--display);font-weight:300;font-size:clamp(3.5rem,14.2vw,9.6rem);line-height:.92;letter-spacing:-.045em;margin:22px 0 10px;white-space:nowrap}
 @media (min-width:900px){.name{font-size:clamp(4rem,9.4vw,8.6rem)}}
@@ -141,11 +146,11 @@ section{padding:clamp(4.5rem,11vw,9rem) 0;position:relative}
 .lead{margin-top:20px;font-size:clamp(1.08rem,2vw,1.28rem);color:var(--ink2);max-width:46ch}
 .cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
 .proof{display:flex;flex-wrap:wrap;gap:10px;margin-top:clamp(1.8rem,4vw,2.6rem)}
-.proof li{display:flex;align-items:baseline;gap:8px;padding:9px 16px;border-radius:99px;background:var(--paper);border:1.5px solid rgba(43,27,58,.16);font-weight:700;font-size:.92rem;color:var(--ink2)}
+.proof li{display:flex;align-items:baseline;gap:8px;padding:9px 16px;border-radius:99px;background:var(--paper);border:1.5px solid color-mix(in srgb,var(--ink) 16%,transparent);font-weight:700;font-size:.92rem;color:var(--ink2)}
 .proof b{font-family:var(--display);font-size:1.25rem;font-weight:700;color:var(--ink);letter-spacing:-.02em}
 .proof li:nth-child(1) b{color:var(--coral-d)}.proof li:nth-child(2) b{color:var(--lilac-d)}
 .hero-art{--px:0;--py:0;position:relative;justify-self:center;width:min(100%,440px);padding:18px 0 34px}
-.post{position:relative;z-index:1;background:var(--paper);border:2px solid var(--ink);border-radius:30px;box-shadow:10px 12px 0 var(--ink);overflow:hidden;transform:rotate(1.6deg) perspective(900px) rotateY(calc(var(--px) * 7deg)) rotateX(calc(var(--py) * -6deg));transition:transform .25s ease-out}
+.post{position:relative;z-index:1;background:var(--paper);border:2px solid var(--ink);border-radius:30px;box-shadow:10px 12px 0 var(--sh);overflow:hidden;transform:rotate(1.6deg) perspective(900px) rotateY(calc(var(--px) * 7deg)) rotateX(calc(var(--py) * -6deg));transition:transform .25s ease-out}
 .post-h{display:flex;align-items:center;gap:12px;padding:12px 16px}
 .post-h b{display:block;line-height:1.2;font-weight:800}
 .post-h small{display:block;color:var(--ink2);font-weight:600;font-size:.84rem}
@@ -159,11 +164,11 @@ section{padding:clamp(4.5rem,11vw,9rem) 0;position:relative}
 .post-f p{margin-top:8px;font-size:.95rem;line-height:1.45}
 .post-f p b{font-weight:800}
 .post-f p b::after{content:" \00B7 ";font-weight:400}
-.sticker{position:absolute;z-index:3;font-weight:800;font-size:.9rem;padding:9px 15px;border-radius:99px;border:2px solid var(--ink);background:var(--butter);box-shadow:3px 4px 0 var(--ink);transform:rotate(-6deg);white-space:nowrap}
+.sticker{position:absolute;z-index:3;font-weight:800;font-size:.9rem;padding:9px 15px;border-radius:99px;border:2px solid var(--ink);background:var(--butter);box-shadow:3px 4px 0 var(--sh);transform:rotate(-6deg);white-space:nowrap}
 .sticker.s1{right:-18px;bottom:128px;background:var(--lilac)}
 .sticker.s2{right:-10px;top:-4px;background:var(--coral);transform:rotate(5deg)}
 .sticker .ico{width:16px;height:16px;display:inline-block;vertical-align:-2px;margin-right:4px}
-.toast{position:absolute;z-index:3;display:flex;align-items:center;gap:10px;padding:10px 18px 10px 10px;border-radius:20px;background:var(--paper);border:2px solid var(--ink);box-shadow:4px 5px 0 var(--ink);white-space:nowrap;transform:translate(calc(var(--px) * -12px),calc(var(--py) * -8px));transition:transform .3s ease-out}
+.toast{position:absolute;z-index:3;display:flex;align-items:center;gap:10px;padding:10px 18px 10px 10px;border-radius:20px;background:var(--paper);border:2px solid var(--ink);box-shadow:4px 5px 0 var(--sh);white-space:nowrap;transform:translate(calc(var(--px) * -12px),calc(var(--py) * -8px));transition:transform .3s ease-out}
 .toast .ti{display:grid;place-items:center;width:38px;height:38px;border-radius:50%;background:var(--coral)}
 .toast.tB .ti{background:var(--lilac)}
 .toast b{display:block;font-family:var(--display);font-size:1.3rem;line-height:1;letter-spacing:-.03em}
@@ -180,8 +185,9 @@ section{padding:clamp(4.5rem,11vw,9rem) 0;position:relative}
   .hero-art{width:min(100%,380px);padding:14px 10px 28px}
   .toast.tB,.sticker.s1,.badge{display:none}
   .toast.tA{right:2px;top:auto;bottom:92px;left:auto}
-  .sticker.s2{right:6px;top:2px}
-  .post{box-shadow:6px 8px 0 var(--ink)}
+  .hero-art{padding-top:46px}
+  .sticker.s2{right:6px;top:0}
+  .post{box-shadow:6px 8px 0 var(--sh)}
   .cta-row .btn{padding:12px 18px}
   .cta-row .btn.primary{flex:1 1 100%;justify-content:center}
   .proof li{flex:1 1 100%}
@@ -196,24 +202,24 @@ section{padding:clamp(4.5rem,11vw,9rem) 0;position:relative}
 .bento{display:grid;gap:14px;grid-template-columns:repeat(2,1fr)}
 @media (min-width:900px){.bento{grid-template-columns:repeat(4,1fr);grid-auto-rows:minmax(200px,auto);gap:18px}.bt.h2{grid-row:span 2}}
 .bt.w2{grid-column:span 2}
-.bt{--rx:0deg;--ry:0deg;position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:space-between;gap:12px;padding:22px;border-radius:var(--r);border:2px solid var(--ink);background:var(--paper);box-shadow:6px 7px 0 var(--ink);transform:perspective(900px) rotateX(var(--rx)) rotateY(var(--ry))}
+.bt{--rx:0deg;--ry:0deg;position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:space-between;gap:12px;padding:22px;border-radius:var(--r);border:2px solid var(--ink);background:var(--paper);box-shadow:6px 7px 0 var(--sh);transform:perspective(900px) rotateX(var(--rx)) rotateY(var(--ry))}
 .bt .k{font-weight:800;font-size:.76rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink2)}
 .bt .n{font-family:var(--display);font-weight:600;font-size:clamp(2.4rem,5.4vw,4rem);line-height:.95;letter-spacing:-.045em}
 .bt .n.s{font-size:clamp(1.8rem,2.7vw,2.4rem);letter-spacing:-.04em}
 .bt .d{min-height:2.7em;font-weight:700;color:var(--ink2);line-height:1.35;font-size:.95rem}
 .bt.c-b{background:var(--blush)}.bt.c-l{background:var(--lilac)}.bt.c-y{background:var(--butter)}.bt.c-c{background:var(--coral)}
 .bt.c-c .k,.bt.c-c .d{color:var(--ink)}
-.bt.dark{background:radial-gradient(60% 80% at 100% 0%,rgba(229,91,154,.55),transparent 62%),radial-gradient(50% 70% at 0% 100%,rgba(139,111,224,.55),transparent 62%),var(--ink);color:var(--cream)}
-.bt.dark .k,.bt.dark .d{color:#E6DCF1}
+.bt.dark{background:radial-gradient(60% 80% at 100% 0%,rgba(229,91,154,.55),transparent 62%),radial-gradient(50% 70% at 0% 100%,rgba(139,111,224,.55),transparent 62%),var(--deep);color:var(--on-deep)}
+.bt.dark .k,.bt.dark .d{color:var(--deep2)}
 .bt.big .n{font-size:clamp(5rem,15vw,10.5rem);font-weight:500;letter-spacing:-.06em}
-.pill{display:inline-flex;padding:6px 14px;border-radius:99px;font-weight:700;font-size:.88rem;background:rgba(255,255,255,.14);color:var(--cream)}
+.pill{display:inline-flex;padding:6px 14px;border-radius:99px;font-weight:700;font-size:.88rem;background:rgba(255,255,255,.14);color:var(--on-deep)}
 .eq{display:flex;align-items:flex-end;gap:3px;height:76px}
 .eq i{flex:1;height:100%;border-radius:3px;background:linear-gradient(#FF7A6B,#8B6FE0);transform-origin:bottom;transform:scaleY(var(--a));animation:eq 1.5s ease-in-out infinite alternate;animation-delay:calc(var(--d) * -1)}
 @keyframes eq{from{transform:scaleY(.12)}to{transform:scaleY(var(--a))}}
 .ba{--bh:64px;display:flex;align-items:flex-end;gap:12px;height:calc(var(--bh) + 24px)}
 .ba div{flex:1;height:100%;display:grid;align-content:end;gap:4px;font-weight:800;font-size:.8rem;text-align:center}
 .js .ba i{display:block;height:calc(var(--h) * var(--bh));min-height:6px;border-radius:10px 10px 4px 4px;background:var(--ink);transform:scaleY(0);transform-origin:bottom;transition:transform 1.1s var(--ease) .3s}
-.ba div:first-child i{background:rgba(43,27,58,.4)}
+.ba div:first-child i{background:color-mix(in srgb,var(--ink) 4%,transparent)}
 .js .in .ba i{transform:none}
 .duo{display:grid;grid-template-columns:repeat(2,auto);justify-content:space-around;gap:16px;height:100%;align-content:center}
 .duo .n{font-size:clamp(2.2rem,5vw,3.6rem)}
@@ -221,7 +227,7 @@ section{padding:clamp(4.5rem,11vw,9rem) 0;position:relative}
 /* ---------- timeline ---------- */
 @media (min-width:900px){
   .feed::before,.feed::after{content:"";position:absolute;left:265px;top:34px;bottom:34px;width:4px;border-radius:4px}
-  .feed::before{background:rgba(43,27,58,.14)}
+  .feed::before{background:color-mix(in srgb,var(--ink) 14%,transparent)}
   .feed::after{background:linear-gradient(#FF7A6B,#E55B9A,#8B6FE0);transform-origin:top;transform:scaleY(var(--p,0))}
   .item{position:relative}
   .when b{font-size:1.2rem}
@@ -246,7 +252,7 @@ section{padding:clamp(4.5rem,11vw,9rem) 0;position:relative}
 .copied{font-weight:800;color:var(--lilac-d);align-self:center}
 
 /* ---------- marquee ---------- */
-.marquee{background:var(--ink);color:var(--cream);overflow:hidden;padding:18px 0;border-block:2px solid var(--ink);transform:rotate(-1deg);margin:-1rem -2vw 0}
+.marquee{background:var(--deep);color:var(--on-deep);overflow:hidden;padding:18px 0;border-block:2px solid var(--ink);transform:rotate(-1deg);margin:-1rem -2vw 0}
 .m-track{display:flex;width:max-content;animation:mq 34s linear infinite}
 .marquee:hover .m-track{animation-play-state:paused}
 .m-set{display:flex;align-items:center;flex:none}
@@ -272,7 +278,7 @@ section{padding:clamp(4.5rem,11vw,9rem) 0;position:relative}
 .hl button:hover .bub{transform:scale(1.08) rotate(-4deg)}
 .hl button[aria-pressed="true"] .bub{transform:scale(1.1)}
 .hl button[aria-pressed="true"] .bub>span{background:var(--blush)}
-.hl-panel{min-height:132px;padding:20px 22px;border-radius:var(--r);background:var(--lilac);border:2px solid var(--ink);box-shadow:6px 7px 0 var(--ink)}
+.hl-panel{min-height:132px;padding:20px 22px;border-radius:var(--r);background:var(--lilac);border:2px solid var(--ink);box-shadow:6px 7px 0 var(--sh)}
 .hl-panel h3{font-family:var(--display);font-size:1.4rem;font-weight:600;letter-spacing:-.01em}
 .hl-panel p{margin-top:6px}
 
@@ -293,8 +299,8 @@ section{padding:clamp(4.5rem,11vw,9rem) 0;position:relative}
 @media (min-width:900px){.item{grid-template-columns:250px 1fr;gap:34px}}
 .when{font-family:var(--display);font-weight:500;font-size:1.1rem;line-height:1.3;color:var(--ink2);padding-top:24px;white-space:nowrap}
 .when b{display:block;font-weight:700;color:var(--ink);font-size:1.3rem}
-.card{position:relative;background:var(--paper);border:2px solid var(--ink);border-radius:var(--r);padding:clamp(18px,3vw,28px);box-shadow:7px 8px 0 var(--ink);transition:transform .35s var(--ease),box-shadow .35s var(--ease)}
-.card:hover{transform:translate(-2px,-3px);box-shadow:10px 12px 0 var(--ink)}
+.card{position:relative;background:var(--paper);border:2px solid var(--ink);border-radius:var(--r);padding:clamp(18px,3vw,28px);box-shadow:7px 8px 0 var(--sh);transition:transform .35s var(--ease),box-shadow .35s var(--ease)}
+.card:hover{transform:translate(-2px,-3px);box-shadow:10px 12px 0 var(--sh)}
 .card-h{display:flex;align-items:center;gap:14px;margin-bottom:14px}
 .card-h h3{font-family:var(--display);font-size:clamp(1.3rem,3vw,1.7rem);font-weight:600;line-height:1.15;letter-spacing:-.015em}
 .card-h small{display:block;color:var(--ink2);font-weight:700;font-size:.9rem}
@@ -305,7 +311,7 @@ section{padding:clamp(4.5rem,11vw,9rem) 0;position:relative}
 .bl li::before{content:"";position:absolute;left:3px;top:.62em;width:10px;height:10px;border-radius:50%;background:var(--coral)}
 .bl li:nth-child(3n+2)::before{background:var(--lilac-d)}
 .bl li:nth-child(3n)::before{background:#E8B52F}
-.card-f{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;padding-top:14px;border-top:1.5px dashed rgba(43,27,58,.25)}
+.card-f{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;padding-top:14px;border-top:1.5px dashed color-mix(in srgb,var(--ink) 25%,transparent)}
 .card-f .acts{gap:12px;color:var(--ink2)}
 .card-f .acts .ico{width:22px;height:22px}
 .card-f .chips{margin-left:auto}
@@ -317,12 +323,12 @@ section{padding:clamp(4.5rem,11vw,9rem) 0;position:relative}
 .work .layout{display:grid;gap:clamp(2rem,4vw,3.5rem);align-items:start}
 @media (min-width:980px){.work .layout{grid-template-columns:360px 1fr}.phone-col{position:sticky;top:96px}}
 .phone-col{display:grid;justify-items:center;gap:14px}
-.phone{position:relative;width:min(300px,82vw);aspect-ratio:9/18.4;border-radius:44px;background:var(--ink);padding:11px;box-shadow:10px 12px 0 var(--coral);transform:rotate(-2deg);transition:transform .5s var(--ease)}
+.phone{position:relative;width:min(300px,82vw);aspect-ratio:9/18.4;border-radius:44px;background:var(--deep);padding:11px;box-shadow:10px 12px 0 var(--coral);transform:rotate(-2deg);transition:transform .5s var(--ease)}
 .phone:hover{transform:rotate(0)}
-.phone::before{content:"";position:absolute;top:19px;left:50%;width:86px;height:22px;border-radius:99px;background:var(--ink);transform:translateX(-50%);z-index:5}
+.phone::before{content:"";position:absolute;top:19px;left:50%;width:86px;height:22px;border-radius:99px;background:var(--deep);transform:translateX(-50%);z-index:5}
 .screen{position:relative;height:100%;border-radius:34px;overflow:hidden;background:var(--tone,var(--blush));display:flex;flex-direction:column;padding:42px 20px 18px;transition:background .5s}
 .s-bars{position:absolute;left:16px;right:16px;top:12px;display:flex;gap:4px;z-index:4}
-.s-bars i{flex:1;height:3.5px;border-radius:3px;background:rgba(43,27,58,.22);overflow:hidden;position:relative}
+.s-bars i{flex:1;height:3.5px;border-radius:3px;background:color-mix(in srgb,var(--ink) 22%,transparent);overflow:hidden;position:relative}
 .s-bars i.on::after,.s-bars i.cur::after{content:"";position:absolute;inset:0;background:var(--ink);transform-origin:left}
 .s-bars i.cur::after{animation:fill var(--dur,6s) linear forwards}
 .screen.paused .s-bars i.cur::after{animation-play-state:paused}
@@ -338,7 +344,7 @@ section{padding:clamp(4.5rem,11vw,9rem) 0;position:relative}
 .s-chart{display:flex;align-items:flex-end;gap:18px;height:96px;margin-top:12px}
 .s-chart div{flex:1;display:grid;align-content:end;justify-items:center;gap:4px;height:100%;font-weight:800;font-size:.8rem}
 .s-chart div i{display:block;width:100%;border-radius:10px 10px 4px 4px;background:var(--ink);min-height:6px}
-.s-chart div:first-child i{background:rgba(43,27,58,.28)}
+.s-chart div:first-child i{background:color-mix(in srgb,var(--ink) 28%,transparent)}
 .s-foot{display:flex;gap:14px;align-items:center;padding-top:10px}
 .s-foot .ico{width:24px;height:24px}
 .s-foot .sp{margin-left:auto}
@@ -348,8 +354,8 @@ section{padding:clamp(4.5rem,11vw,9rem) 0;position:relative}
 .phone-hint{font-size:.9rem;color:var(--ink2);font-weight:700;text-align:center}
 .wlist{display:grid;gap:clamp(14px,2vw,22px)}
 .wcard{position:relative;display:grid;gap:12px;padding:clamp(18px,3vw,26px);border-radius:var(--r);background:var(--paper);border:2px solid var(--ink);cursor:pointer;transition:transform .35s var(--spring),box-shadow .35s var(--ease),background .3s;box-shadow:6px 7px 0 transparent}
-.wcard:hover{transform:translateY(-4px) rotate(-.5deg);box-shadow:6px 7px 0 var(--ink)}
-.wcard.sel{background:var(--blush2);box-shadow:6px 7px 0 var(--ink)}
+.wcard:hover{transform:translateY(-4px) rotate(-.5deg);box-shadow:6px 7px 0 var(--sh)}
+.wcard.sel{background:var(--blush2);box-shadow:6px 7px 0 var(--sh)}
 .wcard[data-tone="l"].sel{background:#F3EDFD}.wcard[data-tone="y"].sel{background:#FFF6D4}
 .w-top{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 14px;justify-content:space-between}
 .w-top .chips{margin-left:0}
@@ -365,10 +371,10 @@ section{padding:clamp(4.5rem,11vw,9rem) 0;position:relative}
 .links .ico{width:15px;height:15px}
 
 /* ---------- services ---------- */
-.services{background:var(--ink);color:var(--cream)}
-.services .sh h2{color:var(--cream)}
+.services{background:var(--deep);color:var(--on-deep)}
+.services .sh h2{color:var(--on-deep)}
 .services .sh h2 em{color:var(--blush)}
-.services .sh p{color:#E6DCF1}
+.services .sh p{color:var(--deep2)}
 .services .eyebrow{color:var(--butter)}
 .sv-grid{display:grid;gap:clamp(14px,2vw,22px)}
 @media (min-width:700px){.sv-grid{grid-template-columns:repeat(2,1fr)}}
@@ -397,12 +403,12 @@ section{padding:clamp(4.5rem,11vw,9rem) 0;position:relative}
 .c-grid{display:grid;gap:14px;margin-top:clamp(2rem,5vw,3.4rem)}
 @media (min-width:760px){.c-grid{grid-template-columns:repeat(3,1fr)}}
 .c-card{display:flex;align-items:center;gap:14px;padding:18px 20px;border-radius:24px;background:var(--paper);border:2px solid var(--ink);text-decoration:none;transition:transform .3s var(--spring),box-shadow .3s;min-width:0}
-.c-card:hover{transform:translateY(-4px) rotate(-.8deg);box-shadow:5px 6px 0 var(--ink)}
+.c-card:hover{transform:translateY(-4px) rotate(-.8deg);box-shadow:5px 6px 0 var(--sh)}
 .c-card .bi{display:grid;place-items:center;width:46px;height:46px;border-radius:50%;background:var(--blush);flex:none}
 .c-card:nth-child(2) .bi{background:var(--lilac)}.c-card:nth-child(3) .bi{background:var(--butter)}
 .c-card small{display:block;color:var(--ink2);font-weight:700;font-size:.82rem}
 .c-card b{display:block;font-weight:800;overflow-wrap:anywhere;line-height:1.3}
-footer{padding:26px 0;background:var(--ink);color:#EADFF5;font-weight:600;font-size:.95rem}
+footer{padding:26px 0;background:var(--deep);color:var(--deep2);font-weight:600;font-size:.95rem}
 footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 20px}
 footer a{color:var(--blush)}
 
@@ -418,7 +424,7 @@ footer a{color:var(--blush)}
 .sil-l img{filter:drop-shadow(0 0 1.2px #2B1B3A)}
 .scan{position:absolute;left:0;right:0;top:0;height:4px;margin-top:-2px;background:linear-gradient(90deg,transparent,#fff 20%,#fff 80%,transparent);box-shadow:0 0 18px 6px rgba(229,91,154,.75),0 0 40px 14px rgba(139,111,224,.5);opacity:0;z-index:3}
 .ring-draw{stroke-dasharray:591;stroke-dashoffset:591}
-.fl{position:absolute;display:flex;align-items:center;gap:6px;padding:9px 14px;border-radius:99px;background:var(--paper);border:2px solid var(--ink);box-shadow:3px 4px 0 var(--ink);font-weight:800;font-size:.95rem;white-space:nowrap;opacity:0;transform:scale(0)}
+.fl{position:absolute;display:flex;align-items:center;gap:6px;padding:9px 14px;border-radius:99px;background:var(--paper);border:2px solid var(--ink);box-shadow:3px 4px 0 var(--sh);font-weight:800;font-size:.95rem;white-space:nowrap;opacity:0;transform:scale(0)}
 .fl .ico{width:22px;height:22px}
 .fl.round{padding:11px;border-radius:50%}
 .fl.heart{right:-14%;top:2%;background:var(--coral)}
@@ -431,7 +437,7 @@ footer a{color:var(--blush)}
 .i-name .mask:first-child span{font-family:var(--display);font-weight:600;font-size:clamp(2rem,7vw,3.4rem);line-height:1.05;letter-spacing:-.03em}
 .i-name .mask:last-child span{font-weight:800;letter-spacing:.14em;text-transform:uppercase;font-size:clamp(.72rem,2.2vw,.9rem);color:var(--ink2)}
 .i-name .mask>span{transform:translateY(115%)}
-.skip{position:absolute;right:16px;bottom:18px;z-index:2;background:rgba(255,253,248,.9);border:2px solid var(--ink);border-radius:99px;padding:8px 18px;font-weight:800;font-size:.9rem;color:var(--ink)}
+.skip{position:absolute;right:16px;bottom:18px;z-index:2;background:color-mix(in srgb,var(--paper) 9%,transparent);border:2px solid var(--ink);border-radius:99px;padding:8px 18px;font-weight:800;font-size:.9rem;color:var(--ink)}
 .hint{position:absolute;left:0;right:0;bottom:26px;text-align:center;font-size:.85rem;font-weight:700;color:var(--ink2);pointer-events:none}
 @media (max-width:520px){.hint{display:none}}
 
@@ -451,6 +457,174 @@ footer a{color:var(--blush)}
   .item::before{transform:none}
   *{scroll-behavior:auto!important}
 }
+
+/* ---------- theme + language controls ---------- */
+.tools{display:flex;align-items:center;gap:8px;margin-left:auto}
+.tgl{display:inline-flex;align-items:center;justify-content:center;height:40px;min-width:46px;padding:0 10px;border-radius:99px;border:1.5px solid var(--ink);background:var(--paper);color:var(--ink);font:800 .84rem/1 var(--body);letter-spacing:.04em;cursor:pointer;transition:background .2s,transform .2s var(--spring)}
+.tgl:hover{background:var(--blush)}
+.tgl:active{transform:scale(.94)}
+.tgl .l{padding:4px 5px;border-radius:99px;opacity:.78;transition:opacity .2s,background .2s,color .2s}
+.tgl .l.on{opacity:1;background:var(--ink);color:var(--cream)}
+.tgl.ic{min-width:40px;padding:0}
+.tgl .ico{width:20px;height:20px}
+html[data-theme="dark"] .tgl .l.on{color:#2B1B3A}
+@media (min-width:980px){.tools{margin-left:0}}
+@media (max-width:520px){.brand>span:last-child{display:none}.tools{gap:6px}.tgl{height:38px;min-width:42px;padding:0 8px;font-size:.78rem}}
+
+/* ---------- dark theme ---------- */
+html[data-theme="dark"]{color-scheme:dark;
+  --cream:#120E1A;--paper:#1E1630;--ink:#F1E8FF;--ink2:#D0C1E6;
+  --blush:#47253F;--blush2:#2A1E33;--coral:#B03850;--coral-d:#FFA08F;
+  --lilac:#352A55;--lilac-d:#C3ADFB;--butter:#4C3D14;
+  --sh:#070409;--deep:#0B0813;--on-deep:#F6EEFF;--deep2:#D6C6EC}
+html[data-theme="dark"] .nav{background:color-mix(in srgb,var(--paper) 88%,transparent)}
+html[data-theme="dark"] .btn.dark:hover{box-shadow:4px 5px 0 var(--coral-d)}
+html[data-theme="dark"] .services .sh h2 em{color:var(--coral-d)}
+html[data-theme="dark"] footer a{color:#FFC6D6}
+html[data-theme="dark"] .intro-bg{background:linear-gradient(155deg,#2C1C31 0%,#251A2F 42%,#1A1633 100%)}
+html[data-theme="dark"] .intro-bg::after{background:radial-gradient(circle at 78% 18%,rgba(255,233,166,.18),transparent 38%)}
+html[data-theme="dark"] .ring-face{background:#1A1526}
+html[data-theme="dark"] .ring-face .face img{filter:none}
+html[data-theme="dark"] .sil-l img{filter:invert(1) brightness(1.35)}
+html[data-theme="dark"] .s-bars i{background:color-mix(in srgb,var(--ink) 30%,transparent)}
+html[data-theme="dark"] .phone{--ink2:#594868;--ink:#2B1B3A;--paper:#FFFDF8;--blush:#FFD3DE;--blush2:#FFE6EC;--butter:#FFF6D4;--lilac:#F3EDFD;--cream:#FFF8EF}
+
+/* ---------- dark theme fixes ---------- */
+html[data-theme="dark"] .card.t-b{background:var(--blush)}
+html[data-theme="dark"] .card.t-l{background:var(--lilac)}
+html[data-theme="dark"] .card.t-y{background:var(--butter)}
+html[data-theme="dark"] .wcard.sel{background:var(--blush)}
+html[data-theme="dark"] .wcard[data-tone="l"].sel{background:var(--lilac)}
+html[data-theme="dark"] .wcard[data-tone="y"].sel{background:var(--butter)}
+/* marquee fade edges */
+.marquee .m-track{position:relative}
+.marquee .m-track::before,.marquee .m-track::after{content:"";position:absolute;top:0;bottom:0;width:60px;pointer-events:none;z-index:1}
+.marquee .m-track::before{left:0;background:linear-gradient(90deg,var(--deep),transparent)}
+.marquee .m-track::after{right:0;background:linear-gradient(270deg,var(--deep),transparent)}
+html[data-theme="light"] .marquee .m-track::before{background:linear-gradient(90deg,var(--ink),transparent)}
+html[data-theme="light"] .marquee .m-track::after{background:linear-gradient(270deg,var(--ink),transparent)}
+/* card bar chart fix ensure visible */
+.s-chart div i{background:var(--ink) !important}
+.s-chart div:first-child i{background:color-mix(in srgb,var(--ink) 28%,transparent) !important}
+
+
+/* ---------- dark contrast fixes ---------- */
+html[data-theme="dark"] .sk .tag, html[data-theme="dark"] .pill, html[data-theme="dark"] .card-f .chips .pill,
+html[data-theme="dark"] .wcard .pill, html[data-theme="dark"] .card-f .acts span {color:var(--ink)}
+html[data-theme="dark"] .s-chart div{color:var(--ink)}
+html[data-theme="dark"] .s-chart div small{color:var(--ink2)}
+html[data-theme="dark"] .w-big small{color:var(--ink)}
+html[data-theme="dark"] .m-track .pill{color:var(--ink)}
+html[data-theme="dark"] .card-h small{color:var(--ink2)}
+html[data-theme="dark"] .role-line span{color:var(--ink2)}
+html[data-theme="dark"] .bl li{color:var(--ink)}
+html[data-theme="dark"] .wcard h3{color:var(--ink)}
+html[data-theme="dark"] .wcard .bl li{color:var(--ink)}
+html[data-theme="dark"] .card-h h3{color:var(--ink)}
+html[data-theme="dark"] .card-f .chips .pill{color:var(--ink)}
+/* ensure metric card numbers visible */
+html[data-theme="dark"] .w-big{color:var(--coral-d)}
+html[data-theme="dark"] .w-big small{color:var(--ink2)}
+
+/* ---------- dark contrast comprehensive ---------- */
+html[data-theme="dark"] .eyebrow,
+html[data-theme="dark"] .sh .eyebrow,
+html[data-theme="dark"] .tag,
+html[data-theme="dark"] .pill,
+html[data-theme="dark"] .chips .pill,
+html[data-theme="dark"] .card-f .chips .pill,
+html[data-theme="dark"] .wcard .pill,
+html[data-theme="dark"] .card-f .acts span,
+html[data-theme="dark"] .hero .stat,
+html[data-theme="dark"] .stat,
+html[data-theme="dark"] .m-track .pill,
+html[data-theme="dark"] .card-h small,
+html[data-theme="dark"] .role-line span,
+html[data-theme="dark"] .bl li,
+html[data-theme="dark"] .wcard h3,
+html[data-theme="dark"] .wcard .bl li,
+html[data-theme="dark"] .card-h h3,
+html[data-theme="dark"] .card-f .chips .pill,
+html[data-theme="dark"] .s-chart div,
+html[data-theme="dark"] .s-chart div small,
+html[data-theme="dark"] .w-big small,
+html[data-theme="dark"] .s-bars i,
+html[data-theme="dark"] .s-body small,
+html[data-theme="dark"] .s-kick,
+html[data-theme="dark"] .s-label,
+html[data-theme="dark"] .w-big,
+html[data-theme="dark"] .hero .proof li b,
+html[data-theme="dark"] .hero .proof li small,
+html[data-theme="dark"] .hero .stat small,
+html[data-theme="dark"] .marquee .pill,
+html[data-theme="dark"] .post .card-f .acts span,
+html[data-theme="dark"] .feed .card-f .acts span,
+html[data-theme="dark"] .post .card-f .chips .pill,
+html[data-theme="dark"] .feed .card-f .chips .pill,
+html[data-theme="dark"] .post .role-line span,
+html[data-theme="dark"] .feed .role-line span,
+html[data-theme="dark"] .post .bl li,
+html[data-theme="dark"] .feed .bl li{color:var(--ink)}
+html[data-theme="dark"] .s-chart div:first-child i{background:color-mix(in srgb,var(--ink) 35%,transparent) !important}
+html[data-theme="dark"] .s-chart div i{background:var(--ink) !important}
+html[data-theme="dark"] .hero .stat small{color:var(--ink)}
+html[data-theme="dark"] .marquee .pill{color:var(--ink)}
+html[data-theme="dark"] .sh h2 em{color:var(--coral-d)}
+html[data-theme="dark"] .services .eyebrow{color:#FFE9A6}
+html[data-theme="dark"] .services .sh h2{color:var(--on-deep)}
+html[data-theme="dark"] .services .sh p{color:var(--deep2)}
+/* ensure metric card numbers pop */
+html[data-theme="dark"] .w-big{color:var(--coral-d)}
+html[data-theme="dark"] .w-big small{color:var(--ink2)}
+/* experience date column */
+html[data-theme="dark"] .when{color:var(--ink2)}
+html[data-theme="dark"] .when b{color:var(--ink)}
+html[data-theme="dark"] .card-h h3{color:var(--ink)}
+html[data-theme="dark"] .card-h small{color:var(--ink2)}
+html[data-theme="dark"] .role-line span{color:var(--ink2)}
+html[data-theme="dark"] .bl li{color:var(--ink)}
+html[data-theme="dark"] .card-f .acts span{color:var(--ink)}
+html[data-theme="dark"] .card-f .chips .pill{color:var(--ink)}
+/* about skill icon labels */
+html[data-theme="dark"] .hl .bub>span{color:var(--ink)}
+html[data-theme="dark"] .hl-panel h3{color:var(--ink)}
+html[data-theme="dark"] .hl-panel p{color:var(--ink2)}
+html[data-theme="dark"] .sk h3{color:var(--ink)}
+html[data-theme="dark"] .sk h3 .ico{color:var(--coral-d)}
+html[data-theme="dark"] .sk:nth-child(2) h3 .ico{color:var(--lilac-d)}
+html[data-theme="dark"] .sk:nth-child(3) h3 .ico{color:var(--lilac-d)}
+/* work phone screen */
+html[data-theme="dark"] .screen{background:var(--tone,var(--blush))}
+html[data-theme="dark"] .s-head b{color:var(--ink)}
+html[data-theme="dark"] .s-head small{color:var(--ink2)}
+html[data-theme="dark"] .s-kick{color:var(--ink)}
+html[data-theme="dark"] .s-big{color:var(--ink)}
+html[data-theme="dark"] .s-label{color:var(--ink2)}
+html[data-theme="dark"] .s-foot .sp{color:var(--ink2)}
+html[data-theme="dark"] .tap:focus-visible{outline:3px solid var(--lilac-d)}
+html[data-theme="dark"] .wlist .wcard{color:var(--ink)}
+html[data-theme="dark"] .wlist .wcard h3{color:var(--ink)}
+html[data-theme="dark"] .wlist .wcard h3 button{color:var(--ink)}
+html[data-theme="dark"] .wlist .wcard .bl li{color:var(--ink)}
+
+/* ---------- dark final tweaks ---------- */
+html[data-theme="dark"] .s-chart div:first-child i{background:color-mix(in srgb,var(--ink) 50%,transparent) !important}
+html[data-theme="dark"] .hero .stat small{color:var(--ink)}
+html[data-theme="dark"] .feed::before,html[data-theme="dark"] .feed::after{background:color-mix(in srgb,var(--ink) 20%,transparent)}
+html[data-theme="dark"] .item::before{background:color-mix(in srgb,var(--ink) 35%,transparent)}
+/* metric cards baseline bars if any */
+html[data-theme="dark"] .ba i:first-child{background:color-mix(in srgb,var(--ink) 40%,transparent)}
+/* ensure marquee text bright */
+html[data-theme="dark"] .marquee .m-track .pill{color:var(--ink)}
+html[data-theme="dark"] .m-track .pill{color:var(--ink)}
+
+/* dark marquee dots + phone label */
+html[data-theme="dark"] .m-set i{background:#FF8A9C}
+html[data-theme="dark"] .m-set i:nth-of-type(3n+2){background:#FFE9A6}
+html[data-theme="dark"] .m-set i:nth-of-type(3n){background:#C3ADFB}
+html[data-theme="dark"] .phone .s-label,html[data-theme="dark"] .phone .s-head small{color:#594868}
+p,li{text-wrap:pretty}
+h2{text-wrap:balance}
 </style>
 </head>
 <body>
@@ -483,6 +657,8 @@ footer a{color:var(--blush)}
     <symbol id="i-cal" viewBox="0 0 24 24"><path d="M4 6h16v14H4zM4 10h16M8 3v4M16 3v4"/></symbol>
     <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
     <symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20.6 14.6A8.6 8.6 0 1 1 9.4 3.4a7 7 0 0 0 11.2 11.2z"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.6v2.2M12 19.2v2.2M2.6 12h2.2M19.2 12h2.2M5.2 5.2l1.6 1.6M17.2 17.2l1.6 1.6M18.8 5.2l-1.6 1.6M6.8 17.2l-1.6 1.6"/></symbol>
     <symbol id="i-grad" viewBox="0 0 24 24"><path d="M2 9l10-5 10 5-10 5zM6 11.5V16c0 1.5 2.7 3 6 3s6-1.5 6-3v-4.5"/></symbol>
     <symbol id="blob1" viewBox="0 0 200 200"><path fill="currentColor" d="M44.7-52.4C57.4-41.3 66.6-26.6 71.1-9.8 75.6 7 75.4 25.9 66.2 39.5 57 53.1 38.8 61.3 20.3 67.4 1.8 73.5-17 77.4-33.2 71.3-49.4 65.2-63 49.1-70.5 31.2-78 13.3-79.3-6.4-72.1-22.1-64.9-37.8-49.1-49.5-33.5-60 -17.9-70.5-2.5-79.9 10.9-76.4c13.4 3.5 20.9 16 33.8 24Z" transform="translate(100 100)"/></symbol>
     <symbol id="blob2" viewBox="0 0 200 200"><path fill="currentColor" d="M39.9-47.6C51.5-37.6 60.4-24.7 64.4-9.6 68.4 5.5 67.5 22.8 59.2 35.6 50.9 48.4 35.2 56.8 18.5 63.1 1.8 69.4-15.9 73.7-30.5 67.9-45.1 62.1-56.6 46.3-63.8 29.4-71 12.5-73.9-5.5-68.2-20.5-62.5-35.5-48.2-47.5-33.6-57.1-19 -66.7-4.1-73.9 7.4-70.7 18.9-67.5 28.3-57.6 39.9-47.6Z" transform="translate(100 100)"/></symbol>
@@ -494,7 +670,7 @@ footer a{color:var(--blush)}
   <div class="intro-bg" id="introBg"></div>
   <div class="stage">
     <div class="ring-wrap" id="ringWrap">
-      <svg viewBox="0 0 200 200" aria-hidden="true"><circle cx="100" cy="100" r="94" fill="none" stroke="rgba(43,27,58,.12)" stroke-width="8"/><circle id="ringDraw" class="ring-draw" cx="100" cy="100" r="94" fill="none" stroke="url(#rg)" stroke-width="8" stroke-linecap="round"/></svg>
+      <svg viewBox="0 0 200 200" aria-hidden="true"><circle cx="100" cy="100" r="94" fill="none" stroke="color-mix(in srgb,var(--ink) 12%,transparent)" stroke-width="8"/><circle id="ringDraw" class="ring-draw" cx="100" cy="100" r="94" fill="none" stroke="url(#rg)" stroke-width="8" stroke-linecap="round"/></svg>
       <div class="ring-face">
         <div class="face" id="introFace" style="clip-path:inset(0 0 100% 0)"><img src="assets/images/tasya.png" width="896" height="1195" alt=""></div>
         <div class="face sil-l" id="silL"><img src="assets/images/silhouette.png" width="896" height="1195" alt=""></div>
@@ -526,6 +702,10 @@ footer a{color:var(--blush)}
     <nav class="menu" aria-label="Primary">
       <a href="#about">About</a><a href="#skills">Skills</a><a href="#experience">Experience</a><a href="#work">Work</a><a href="#services">Services</a><a href="#resume">Resume</a><a class="cta" href="#contact">Contact</a>
     </nav>
+    <div class="tools">
+      <button class="tgl" id="langBtn" type="button" aria-label="Switch to Indonesian"><span class="l on" data-l="id">ID</span><span class="l" data-l="en">EN</span></button>
+      <button class="tgl ic" id="themeBtn" type="button" aria-label="Switch to dark mode"><svg class="ico" id="themeIco" aria-hidden="true"><use href="#i-moon"/></svg></button>
+    </div>
     <button class="burger" id="burger" type="button" aria-expanded="false" aria-controls="mmenu" aria-label="Open menu"><svg class="ico" aria-hidden="true"><use href="#i-menu"/></svg></button>
   </div>
   <div class="wrap"><nav class="mmenu" id="mmenu" aria-label="Mobile">
@@ -622,7 +802,7 @@ footer a{color:var(--blush)}
 </section>
 
 <!-- ============ SKILLS ============ -->
-<svg class="wave" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true" style="background:transparent"><path d="M0 34 C 200 6 400 62 720 32 S 1240 4 1440 30 V60 H0Z" fill="#FFE6EC"/><path d="M0 34 C 200 6 400 62 720 32 S 1240 4 1440 30" fill="none" stroke="#2B1B3A" stroke-width="2" vector-effect="non-scaling-stroke"/></svg>
+<svg class="wave" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true" style="background:transparent"><path d="M0 34 C 200 6 400 62 720 32 S 1240 4 1440 30 V60 H0Z" style="fill:var(--blush2)"/><path d="M0 34 C 200 6 400 62 720 32 S 1240 4 1440 30" fill="none" style="stroke:var(--ink)" stroke-width="2" vector-effect="non-scaling-stroke"/></svg>
 <section class="skills" id="skills" aria-labelledby="sk-t">
   <div class="wrap">
     <div class="sh reveal"><span class="eyebrow">Skills &amp; Tools</span><h2 id="sk-t">The <em>toolkit</em> behind the feed.</h2></div>
@@ -636,7 +816,7 @@ footer a{color:var(--blush)}
 </section>
 
 <!-- ============ EXPERIENCE ============ -->
-<svg class="wave" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true" style="background:#FFE6EC"><path d="M0 28 C 260 62 520 0 760 30 S 1230 58 1440 26 V60 H0Z" fill="#FFF8EF"/><path d="M0 28 C 260 62 520 0 760 30 S 1230 58 1440 26" fill="none" stroke="#2B1B3A" stroke-width="2" vector-effect="non-scaling-stroke"/></svg>
+<svg class="wave" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true" style="background:var(--blush2)"><path d="M0 28 C 260 62 520 0 760 30 S 1230 58 1440 26 V60 H0Z" style="fill:var(--cream)"/><path d="M0 28 C 260 62 520 0 760 30 S 1230 58 1440 26" fill="none" style="stroke:var(--ink)" stroke-width="2" vector-effect="non-scaling-stroke"/></svg>
 <section id="experience" aria-labelledby="ex-t">
   <div class="wrap">
     <div class="sh reveal"><span class="eyebrow">Experience</span><h2 id="ex-t">A feed of <em>real results</em>.</h2></div>
@@ -726,7 +906,7 @@ footer a{color:var(--blush)}
 </section>
 
 <!-- ============ WORK ============ -->
-<svg class="wave" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true" style="background:transparent"><path d="M0 30 C 180 58 420 4 700 34 S 1200 56 1440 22 V60 H0Z" fill="#FFE6EC"/><path d="M0 30 C 180 58 420 4 700 34 S 1200 56 1440 22" fill="none" stroke="#2B1B3A" stroke-width="2" vector-effect="non-scaling-stroke"/></svg>
+<svg class="wave" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true" style="background:transparent"><path d="M0 30 C 180 58 420 4 700 34 S 1200 56 1440 22 V60 H0Z" style="fill:var(--blush2)"/><path d="M0 30 C 180 58 420 4 700 34 S 1200 56 1440 22" fill="none" style="stroke:var(--ink)" stroke-width="2" vector-effect="non-scaling-stroke"/></svg>
 <section class="work" id="work" aria-labelledby="wk-t" style="background:var(--blush2)">
   <div class="wrap">
     <div class="sh reveal"><span class="eyebrow">Selected Work</span><h2 id="wk-t">Campaigns that <em>moved the numbers</em>.</h2><p>Tap a card or swipe through the story to see the results.</p></div>
@@ -791,7 +971,7 @@ footer a{color:var(--blush)}
 </section>
 
 <!-- ============ SERVICES ============ -->
-<svg class="wave" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true" style="background:#FFE6EC"><path d="M0 34 C 200 6 400 62 720 32 S 1240 4 1440 30 V60 H0Z" fill="#2B1B3A"/><path d="M0 34 C 200 6 400 62 720 32 S 1240 4 1440 30" fill="none" stroke="#2B1B3A" stroke-width="2" vector-effect="non-scaling-stroke"/></svg>
+<svg class="wave" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true" style="background:var(--blush2)"><path d="M0 34 C 200 6 400 62 720 32 S 1240 4 1440 30 V60 H0Z" style="fill:var(--deep)"/><path d="M0 34 C 200 6 400 62 720 32 S 1240 4 1440 30" fill="none" style="stroke:var(--ink)" stroke-width="2" vector-effect="non-scaling-stroke"/></svg>
 <section class="services" id="services" aria-labelledby="sv-t">
   <div class="wrap">
     <div class="sh reveal"><span class="eyebrow">Services</span><h2 id="sv-t">How I can <em>help your brand</em>.</h2></div>
@@ -807,7 +987,7 @@ footer a{color:var(--blush)}
 </section>
 
 <!-- ============ RESUME ============ -->
-<svg class="wave" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true" style="background:#2B1B3A"><path d="M0 28 C 260 62 520 0 760 30 S 1230 58 1440 26 V60 H0Z" fill="#FFF8EF"/><path d="M0 28 C 260 62 520 0 760 30 S 1230 58 1440 26" fill="none" stroke="#2B1B3A" stroke-width="2" vector-effect="non-scaling-stroke"/></svg>
+<svg class="wave" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true" style="background:var(--deep)"><path d="M0 28 C 260 62 520 0 760 30 S 1230 58 1440 26 V60 H0Z" style="fill:var(--cream)"/><path d="M0 28 C 260 62 520 0 760 30 S 1230 58 1440 26" fill="none" style="stroke:var(--ink)" stroke-width="2" vector-effect="non-scaling-stroke"/></svg>
 <section id="resume" aria-labelledby="rs-t">
   <div class="wrap res">
     <div class="reveal">
@@ -824,7 +1004,7 @@ footer a{color:var(--blush)}
 </section>
 
 <!-- ============ CONTACT ============ -->
-<svg class="wave" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true" style="background:transparent"><path d="M0 30 C 180 58 420 4 700 34 S 1200 56 1440 22 V60 H0Z" fill="#FFE9A6"/><path d="M0 30 C 180 58 420 4 700 34 S 1200 56 1440 22" fill="none" stroke="#2B1B3A" stroke-width="2" vector-effect="non-scaling-stroke"/></svg>
+<svg class="wave" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true" style="background:transparent"><path d="M0 30 C 180 58 420 4 700 34 S 1200 56 1440 22 V60 H0Z" style="fill:var(--butter)"/><path d="M0 30 C 180 58 420 4 700 34 S 1200 56 1440 22" fill="none" style="stroke:var(--ink)" stroke-width="2" vector-effect="non-scaling-stroke"/></svg>
 <section class="contact" id="contact" aria-labelledby="ct-t">
   <div class="wrap">
     <span class="eyebrow reveal">Contact</span>
@@ -850,11 +1030,68 @@ footer a{color:var(--blush)}
   const noanim = /noanim/.test(location.search);
   $('#yr').textContent = new Date().getFullYear();
 
+  /* ---------- theme + language ---------- */
+  const ID = {"Skip to content": "Langsung ke konten", "About": "Tentang", "Skills": "Keahlian", "Experience": "Pengalaman", "Work": "Karya", "Services": "Layanan", "Resume": "Resume", "Contact": "Kontak", "Jakarta, Indonesia": "Jakarta, Indonesia", "Focus": "Fokus", "Content strategy, short-form video, copywriting, KOL campaigns, and social analytics": "Strategi konten, video pendek, copywriting, kampanye KOL, dan analitik media sosial", "3 years of experience in social media management, content strategy, and short-form video for organic and Meta Ads campaigns.": "3 tahun pengalaman di manajemen media sosial, strategi konten, dan video pendek untuk kampanye organik dan Meta Ads.", "View Work": "Lihat Karya", "Download CV": "Unduh CV", "3 yrs": "3 tahun", "in social media": "di media sosial", "TikTok views": "tayangan TikTok", "Creative Dept KPIs": "KPI Divisi Kreatif", "Content strategy, short-form video, and campaigns that grow audiences.": "Strategi konten, video pendek, dan kampanye yang menumbuhkan audiens.", "SOZO Instagram, 5 months": "Instagram SOZO, 5 bulan", "TikTok views in 1 year": "tayangan TikTok dalam 1 tahun", "Meta Ads & Organic": "Meta Ads & Organik", "By the numbers": "Dalam angka", "Growth you can": "Pertumbuhan yang bisa", "measure": "diukur", "54M post impressions": "54 jt impresi konten", "2.5M likes": "2,5 jt suka", "TikTok followers": "pengikut TikTok", "1 year, Mr. Bob": "1 tahun, Mr. Bob", "Instagram followers": "pengikut Instagram", "Instagram followers in 5 months": "pengikut Instagram dalam 5 bulan", "Instagram followers; impressions +24.7% in 5 months": "pengikut Instagram; impresi +24,7% dalam 5 bulan", "IELTS launch webinar": "webinar peluncuran IELTS", "participants, with a team of 2 content creators": "peserta, dengan tim 2 kreator konten", "Creative Department KPIs": "KPI Divisi Kreatif", "Nominated Most Evolve Employee, Galaversary 2024": "Nominasi Most Evolve Employee, Galaversary 2024", "Profile visits in 1 year": "Kunjungan profil dalam 1 tahun", "Creative,": "Kreatif,", "data-minded": "berbasis data", ", and always on trend.": ", dan selalu mengikuti tren.", "Creative": "Kreatif", "and": "dan", "with 3 years of experience in social media management and content creation for both organic social media and Meta Ads campaigns.": "dengan 3 tahun pengalaman di manajemen media sosial dan pembuatan konten, baik untuk media sosial organik maupun kampanye Meta Ads.", "Skilled in content ideation, end-to-end content execution, performance analysis, and KOL collaborations to drive brand awareness, engagement, and campaign performance across Instagram, TikTok, and LinkedIn. Holds a Bachelor of Psychology from the State Islamic Institute of Kediri.": "Terampil dalam ide konten, eksekusi konten end-to-end, analisis performa, dan kolaborasi KOL untuk mendorong brand awareness, engagement, dan performa kampanye di Instagram, TikTok, dan LinkedIn. Lulusan S1 Psikologi dari IAIN Kediri.", "Content Strategy": "Strategi Konten", "Short-Form Video": "Video Pendek", "KOL Collabs": "Kolaborasi KOL", "Analytics": "Analitik", "Monthly content pillars (Education, Entertainment, Conversion) with platform-specific concepts for Instagram, TikTok, and LinkedIn.": "Pillar konten bulanan (Edukasi, Hiburan, Konversi) dengan konsep khusus per platform untuk Instagram, TikTok, dan LinkedIn.", "Skills & Tools": "Keahlian & Tools", "The": "Perangkat", "toolkit": "andalan", "behind the feed.": "di balik setiap konten.", "Social Media": "Media Sosial", "Content": "Konten", "Analytics & Tools": "Analitik & Tools", "Professional": "Profesional", "Teamwork": "KerjaTim", "Communication": "Komunikasi", "Creativity": "Kreativitas", "TimeManagement": "ManajemenWaktu", "Adaptability": "Adaptasi", "TrendAwareness": "PekaTren", "A feed of": "Deretan", "real results": "hasil nyata", "Dec 2025 – Present": "Des 2025 – Sekarang", "May 2025 – Oct 2025": "Mei 2025 – Okt 2025", "Sep 2023 – Apr 2025": "Sep 2023 – Apr 2025", "Oct 2024 – Apr 2025": "Okt 2024 – Apr 2025", "Sep 2023 – Oct 2024": "Sep 2023 – Okt 2024", "Apr 2023 – Aug 2023": "Apr 2023 – Agu 2023", "May 2023 – Jul 2023": "Mei 2023 – Jul 2023", "Oct 2021 – Dec 2021": "Okt 2021 – Des 2021", "Aug 2018 – Dec 2022": "Agu 2018 – Des 2022", "Dec 2023": "Des 2023", "Seven Retail, SOZO Hair Removal (House of Brands)": "Seven Retail, SOZO Hair Removal (House of Brands)", "Grew the SOZO Hair Removal Instagram account from 0 to 2,700 followers within 5 months through trend-driven Reels and educational storytelling.": "Menumbuhkan akun Instagram SOZO Hair Removal dari 0 ke 2.700 pengikut dalam 5 bulan lewat Reels yang mengikuti tren dan storytelling edukatif.", "Plan monthly content pillars and develop concepts for Instagram Stories, Feed posts, carousels, and Reels.": "Merencanakan pillar konten bulanan dan mengembangkan konsep untuk Instagram Stories, Feed, carousel, dan Reels.", "Write Meta Ads creative briefs, direct content shoots, and research social media trends with the creative team.": "Menulis creative brief Meta Ads, mengarahkan shooting konten, dan meriset tren media sosial bersama tim kreatif.", "Increased Instagram followers from 600 to 1,622 and impressions by 24.7% within 5 months through targeted content campaigns and audience segmentation.": "Menaikkan pengikut Instagram dari 600 ke 1.622 dan impresi 24,7% dalam 5 bulan lewat kampanye konten bertarget dan segmentasi audiens.", "Raised Reels views from 300–500 to 3,000–4,500+ and carousel views from 250 to 1,000+ by diversifying content across Education, Entertainment, and Conversion pillars.": "Menaikkan tayangan Reels dari 300–500 ke 3.000–4.500+ dan tayangan carousel dari 250 ke 1.000+ dengan mendiversifikasi konten ke pillar Edukasi, Hiburan, dan Konversi.", "Managed Instagram and LinkedIn end to end: content planning, script briefs, editing, publishing, and monthly reporting.": "Mengelola Instagram dan LinkedIn secara end-to-end: perencanaan konten, brief script, editing, publishing, dan laporan bulanan.", "Executed push notification campaigns via Firebase and OneSignal, increasing click-through rate (CTR) by 2%.": "Menjalankan kampanye push notification lewat Firebase dan OneSignal, menaikkan click-through rate (CTR) sebesar 2%.", "Managed Instagram and TikTok accounts for 3 brands and led a team of 2 content creators.": "Mengelola akun Instagram dan TikTok untuk 3 brand dan memimpin tim 2 kreator konten.", "Grew Instagram followers from 100K to 134K (+34%) and TikTok followers from 70K to 171K (+144%) within 1 year through platform-specific content, hashtag optimization, and influencer collaborations.": "Menumbuhkan pengikut Instagram dari 100 rb ke 134 rb (+34%) dan pengikut TikTok dari 70 rb ke 171 rb (+144%) dalam 1 tahun lewat konten khusus per platform, optimasi hashtag, dan kolaborasi influencer.", "Increased profile visits by 50% on Instagram and 100% on TikTok within 1 year; drove 38M TikTok views and 54M post impressions through content optimization.": "Menaikkan kunjungan profil 50% di Instagram dan 100% di TikTok dalam 1 tahun; menghasilkan 38 jt tayangan TikTok dan 54 jt impresi konten lewat optimasi konten.", "Tracked analytics in TikTok, Instagram, and Meta Business Suite; replied to comments and DMs within 12 hours.": "Memantau analitik di TikTok, Instagram, dan Meta Business Suite; membalas komentar dan DM dalam 12 jam.", "Ran KOL, influencer, and affiliate campaigns and coordinated an IELTS launch webinar with 400 participants.": "Menjalankan kampanye KOL, influencer, dan afiliasi serta mengoordinasikan webinar peluncuran IELTS dengan 400 peserta.", "Ranked top 3 in Creative Department KPIs for follower growth, content performance, and audience management; nominated Most Evolve Employee (Galaversary 2024).": "Masuk top 3 KPI Divisi Kreatif untuk pertumbuhan pengikut, performa konten, dan manajemen audiens; dinominasikan Most Evolve Employee (Galaversary 2024).", "Supported the team in executing a concert event in Surabaya.": "Mendukung tim dalam eksekusi acara konser di Surabaya.", "Improved customer satisfaction by 20% by answering calls and messages; recorded daily sales with 99% accuracy, cut stock loss by 15%, and prepared weekly sales reports.": "Menaikkan kepuasan pelanggan 20% lewat penanganan telepon dan pesan; mencatat penjualan harian dengan akurasi 99%, menekan selisih stok 15%, dan menyusun laporan penjualan mingguan.", "Coordinated online CPNS basic training (95% completion) and assisted school principal training events (90% satisfaction).": "Mengoordinasikan pelatihan dasar CPNS online (95% tuntas) dan membantu acara pelatihan kepala sekolah (90% kepuasan).", "Education": "Pendidikan", "State Islamic Institute of Kediri": "IAIN Kediri", "Bachelor of Psychology (GPA: 3.48/4.00)": "S1 Psikologi (IPK: 3,48/4,00)", "Thesis:": "Skripsi:", "The Influence of Humor-Based Learning Strategies on the Short-Term Memory of Students at SMAN 3 Kediri.": "Pengaruh Strategi Pembelajaran Berbasis Humor terhadap Memori Jangka Pendek Siswa SMAN 3 Kediri.", "Certification": "Sertifikasi", "Selected Work": "Karya Pilihan", "Campaigns that": "Kampanye yang", "moved the numbers": "menggerakkan angka", "Tap a card or swipe through the story to see the results.": "Klik kartu atau geser cerita untuk melihat hasilnya.", "Tap the left or right side to browse": "Klik sisi kiri atau kanan untuk menjelajah", "TikTok growth": "Pertumbuhan TikTok", "Organic": "Organik", "70K to 171K followers": "70 rb ke 171 rb pengikut", "38M TikTok views, 54M post impressions, and 2.5M likes within 1 year through content optimization.": "38 jt tayangan TikTok, 54 jt impresi konten, dan 2,5 jt suka dalam 1 tahun lewat optimasi konten.", "Profile visits up 100% in 1 year, reaching 229K.": "Kunjungan profil naik 100% dalam 1 tahun, mencapai 229 rb.", "(opens TikTok)": "(membuka TikTok)", "Instagram growth": "Pertumbuhan Instagram", "100K to 134K followers": "100 rb ke 134 rb pengikut", "Instagram profile visits up 50% within 1 year.": "Kunjungan profil Instagram naik 50% dalam 1 tahun.", "Total audience interaction (Feed posts and Stories) up 100% through more relevant and interactive content.": "Total interaksi audiens (Feed dan Stories) naik 100% lewat konten yang lebih relevan dan interaktif.", "(opens Instagram)": "(membuka Instagram)", "SOZO Hair Removal Instagram": "Instagram SOZO Hair Removal", "followers in 5 months": "pengikut dalam 5 bulan", "Trend-driven Reels and educational storytelling for a beauty clinic brand under Seven Retail.": "Reels yang mengikuti tren dan storytelling edukatif untuk brand klinik kecantikan di bawah Seven Retail.", "Organic Reels reached 8,632, 8,628, and 7,272 views.": "Reels organik mencapai 8.632, 8.628, dan 7.272 tayangan.", "Altuzs Instagram": "Instagram Altuzs", "Edutainment": "Edutainment", "Impressions up 24.7% within 5 months through targeted content campaigns and audience segmentation.": "Impresi naik 24,7% dalam 5 bulan lewat kampanye konten bertarget dan segmentasi audiens.", "Reels views rose from 300–500 to 3,000–4,500+; carousel views from 250 to 1,000+.": "Tayangan Reels naik dari 300–500 ke 3.000–4.500+; tayangan carousel dari 250 ke 1.000+.", "IELTS Webinar Launching Program": "Program Peluncuran Webinar IELTS", "participants engaged": "peserta terlibat", "Led a team of 2 content creators and managed event timelines and workflows.": "Memimpin tim 2 kreator konten serta mengatur timeline dan alur kerja acara.", "Oversaw participant flow from registration and technical run to post-event evaluation, raising awareness and interest in the IELTS program.": "Mengawal alur peserta dari registrasi dan technical run sampai evaluasi pasca-acara, menaikkan awareness dan minat pada program IELTS.", "Take Over Alumni": "Take Over Alumni", "Q&A Stories": "Q&A Stories", "Instagram Story Q&A series with alumni who worked or studied abroad after learning TOEFL/IELTS, built to inspire potential customers through authentic success stories.": "Seri Q&A Instagram Story bersama alumni yang bekerja atau kuliah di luar negeri setelah belajar TOEFL/IELTS, dibuat untuk menginspirasi calon pelanggan lewat kisah sukses yang autentik.", "Developed the concept and strategy, recruited alumni as content talent, and coordinated production schedules.": "Mengembangkan konsep dan strategi, merekrut alumni sebagai talent konten, dan mengoordinasikan jadwal produksi.", "Best Achievement": "Pencapaian Terbaik", "Ranked top 3 for follower growth, content performance, and audience management.": "Peringkat top 3 untuk pertumbuhan pengikut, performa konten, dan manajemen audiens.", "Nominated Most Evolve Employee at Galaversary 2024, the 13th anniversary event.": "Dinominasikan Most Evolve Employee di Galaversary 2024, acara ulang tahun ke-13.", "How I can": "Bagaimana saya bisa", "help your brand": "membantu brand Anda", "Social Media Management": "Manajemen Media Sosial", "End-to-end management of Instagram, TikTok, and LinkedIn: content planning, script briefs, editing, publishing, and monthly reporting.": "Manajemen Instagram, TikTok, dan LinkedIn secara end-to-end: perencanaan konten, brief script, editing, publishing, dan laporan bulanan.", "Content Strategy & Planning": "Strategi & Perencanaan Konten", "Monthly content pillars, content calendars, and platform-specific concepts for Stories, Feed posts, carousels, and Reels, plus Meta Ads creative briefs.": "Pillar konten bulanan, kalender konten, dan konsep khusus per platform untuk Stories, Feed, carousel, dan Reels, plus creative brief Meta Ads.", "Reels and TikTok ideation, scriptwriting, shoot direction, and trend research to keep content relevant.": "Ide Reels dan TikTok, penulisan script, arahan shooting, dan riset tren agar konten tetap relevan.", "Captions and carousel copy for Instagram, from educational to soft-selling and conversion-driven formats.": "Caption dan copy carousel untuk Instagram, dari format edukatif sampai soft-selling dan konversi.", "KOL & Influencer Campaigns": "Kampanye KOL & Influencer", "Campaigns with KOLs, influencers, and affiliates, from outreach and tracking sheets to content execution.": "Kampanye bersama KOL, influencer, dan afiliasi, dari outreach dan tracking sheet sampai eksekusi konten.", "Analytics & Reporting": "Analitik & Pelaporan", "Performance monitoring with Instagram Insights, TikTok Analytics, and Meta Business Suite, turned into reports with actionable insights.": "Pemantauan performa dengan Instagram Insights, TikTok Analytics, dan Meta Business Suite, diubah jadi laporan dengan insight yang bisa dieksekusi.", "One page,": "Satu halaman,", "ATS-ready": "siap ATS", "A one-page resume with selectable text, standard section headings, and the same results shown on this site.": "Resume satu halaman dengan teks yang bisa diseleksi, judul bagian standar, dan hasil yang sama seperti di situs ini.", "Download Resume (PDF)": "Unduh Resume (PDF)", "Open in new tab": "Buka di tab baru", "PDF, 1 page, US Letter.": "PDF, 1 halaman, US Letter.", "Let’s work": "Mari", "together.": "bekerja sama.", "Have a brand, a campaign, or a role in mind? Send a message and let’s talk.": "Punya brand, kampanye, atau posisi yang ingin diisi? Kirim pesan dan mari bicara.", "Email Tasya": "Email Tasya", "Copy email address": "Salin alamat email", "Email": "Email", "Phone": "Telepon", "Tasya Putri, back to top": "Tasya Putri, kembali ke atas", "Primary": "Utama", "Open menu": "Buka menu", "Close menu": "Tutup menu", "Mobile": "Seluler", "Highlights": "Sorotan", "Portrait of Tasya Putri, smiling, wearing a black hijab and a black knit cardigan with an animal-print lining": "Potret Tasya Putri, tersenyum, mengenakan hijab hitam dan kardigan rajut hitam dengan lining motif hewan", "Platforms and tools": "Platform dan tools", "Strength highlights": "Sorotan kekuatan", "Story viewer with campaign results": "Penampil cerita dengan hasil kampanye", "Previous result": "Hasil sebelumnya", "Next result": "Hasil berikutnya", "Show TikTok growth in the story viewer": "Tampilkan pertumbuhan TikTok di penampil cerita", "Show Instagram growth in the story viewer": "Tampilkan pertumbuhan Instagram di penampil cerita", "Show SOZO Hair Removal results in the story viewer": "Tampilkan hasil SOZO Hair Removal di penampil cerita", "Show Altuzs results in the story viewer": "Tampilkan hasil Altuzs di penampil cerita", "Show the IELTS webinar results in the story viewer": "Tampilkan hasil webinar IELTS di penampil cerita", "Show the Take Over Alumni project in the story viewer": "Tampilkan proyek Take Over Alumni di penampil cerita", "Show the KPI achievement in the story viewer": "Tampilkan pencapaian KPI di penampil cerita", "Open the resume PDF in a new tab": "Buka PDF resume di tab baru", "Preview of Tasya Putri's one-page resume with Summary, Experience, Education, Skills, and Certifications sections": "Pratinjau resume satu halaman Tasya Putri dengan bagian Ringkasan, Pengalaman, Pendidikan, Keahlian, dan Sertifikasi", "TikTok, 1 year": "TikTok, 1 tahun", "TikTok followers in 1 year": "pengikut TikTok dalam 1 tahun", "Instagram, 1 year": "Instagram, 1 tahun", "Instagram followers in 1 year": "pengikut Instagram dalam 1 tahun", "Seven Retail, 5 months": "Seven Retail, 5 bulan", "Instagram launch": "Peluncuran Instagram", "Instagram, 5 months": "Instagram, 5 bulan", "Instagram followers, 600 to 1,622": "pengikut Instagram, 600 ke 1.622", "IELTS launch, Mar 2025": "Peluncuran IELTS, Mar 2025", "Event coordination": "Koordinasi acara", "participants in the IELTS launch webinar": "peserta di webinar peluncuran IELTS", "Instagram Stories series": "Seri Instagram Stories", "Content series": "Seri konten", "Alumni stories that build trust": "Cerita alumni yang membangun kepercayaan", "Recognition": "Pengakuan", "KPI performer, Creative Department": "Performer KPI, Divisi Kreatif", "Email copied": "Email disalin", "Copy failed. Use the Email button instead.": "Gagal menyalin. Pakai tombol Email.", "Short-form video": "Video pendek", "Copywriting": "Copywriting", "KOL campaigns": "Kampanye KOL", "Social analytics": "Analitik media sosial", "Switch to dark mode": "Ganti ke mode gelap", "Switch to light mode": "Ganti ke mode terang", "Switch to Indonesian": "Ganti ke Bahasa Indonesia", "Switch to English": "Ganti ke Bahasa Inggris", "Reels and TikTok ideation, scriptwriting, and shoot direction, backed by constant trend research.": "Ide Reels dan TikTok, penulisan script, dan arahan shooting, didukung riset tren terus-menerus.", "Captions and carousel copy for Instagram, from educational to soft-selling and hard-selling formats.": "Caption dan copy carousel untuk Instagram, dari format edukatif sampai soft-selling dan hard-selling.", "KOL Collaboration": "Kolaborasi KOL", "Meta Ads Content": "Konten Meta Ads", "Campaigns with KOLs, influencers, and affiliates to promote company programs, planned with a KOL tracking sheet.": "Kampanye bersama KOL, influencer, dan afiliasi untuk mempromosikan program perusahaan, direncanakan dengan KOL tracking sheet.", "Creative briefs for Meta Ads content, alongside organic content for the same brand.": "Creative brief untuk konten Meta Ads, berdampingan dengan konten organik untuk brand yang sama.", "Monthly reports with actionable insights from Instagram Insights, TikTok Analytics, and Meta Business Suite.": "Laporan bulanan dengan insight yang bisa dieksekusi dari Instagram Insights, TikTok Analytics, dan Meta Business Suite.", "Skip intro": "Lewati intro", "Tap anywhere or press any key to skip": "Ketuk di mana saja atau tekan tombol apa pun untuk lewati", "followers": "pengikut", "Intro animation. Press any key or tap to skip.": "Animasi pembuka. Tekan tombol apa pun atau ketuk untuk melewati.", "TikTok followers, 70K to 171K": "pengikut TikTok, 70 rb ke 171 rb", "Altuzs impressions in 5 months": "impresi Altuzs dalam 5 bulan", "Content strategy": "Strategi konten", "Social Media Specialist": "Spesialis Media Sosial", "Content Creator": "Kreator Konten", "Tools": "Alat", "Head of Social Media Division": "Kepala Divisi Media Sosial", "Social Media Officer": "Staf Media Sosial", "Most Evolve Employee": "Karyawan Paling Berkembang", "House of Brands": "House of Brands", "Meta Ads": "Iklan Meta", "Media Sosial": "Media Sosial", "Konten": "Konten", "Analitik & Tools": "Analitik & Alat", "Profesional": "Profesional", "Pertumbuhan yang bisa diukur": "Pertumbuhan yang bisa diukur", "Deretan hasil nyata": "Deretan hasil nyata", "Kreatif, berbasis data, dan selalu mengikuti tren.": "Kreatif, berbasis data, dan selalu mengikuti tren.", "Perangkat andalan di balik setiap konten": "Perangkat andalan di balik setiap konten", "Tentang": "Tentang", "Keahlian": "Keahlian", "Pengalaman": "Pengalaman", "Karya": "Karya", "Layanan": "Layanan", "Kontak": "Kontak", "Lihat Karya": "Lihat Karya", "Unduh CV": "Unduh CV", "38M": "38 jt", "+2,700": "+2.700", "2,700": "2.700", "1,622": "1.622", "0 → 2,700": "0 → 2.700", "600 → 1,622": "600 → 1.622", "+24.7%": "+24,7%", "70K": "70 rb", "171K": "171 rb", "100K": "100 rb", "134K": "134 rb"};
+  let lang = root.lang === 'id' ? 'id' : 'en';
+  const T = s => (lang === 'id' && ID[s] !== undefined) ? ID[s] : s;
+  const norm = s => s.replace(/\s+/g, ' ').trim();
+  const EXCL = '#screen,#hlPanel,#copyMsg,#swap,#toastA,#toastB,#langBtn,#themeBtn,script,style,noscript,svg';
+  const tNodes = [], aNodes = [];
+  (function collect() {
+    const tw = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+    let nn;
+    while ((nn = tw.nextNode())) {
+      const pa = nn.parentNode;
+      if (!pa || (pa.closest && pa.closest(EXCL))) continue;
+      const k = norm(nn.nodeValue);
+      if (!k || ID[k] === undefined) continue;
+      nn.__en = nn.nodeValue; nn.__lead = nn.nodeValue.match(/^\s*/)[0]; nn.__trail = nn.nodeValue.match(/\s*$/)[0];
+      tNodes.push(nn);
+    }
+    $$('[aria-label],[alt],[title]').forEach(el => {
+      if (el.closest('#themeBtn,#langBtn,#burger')) return;
+      ['aria-label', 'alt', 'title'].forEach(a => {
+        const v = el.getAttribute(a);
+        if (v && ID[v] !== undefined) { el['_en_' + a] = v; aNodes.push([el, a]); }
+      });
+    });
+  })();
+  const applyStatic = () => {
+    tNodes.forEach(nn => { const t = ID[norm(nn.__en)]; if (t === undefined) return; nn.nodeValue = lang === 'id' ? nn.__lead + t + nn.__trail : nn.__en; });
+    aNodes.forEach(([el, a]) => { const en = el['_en_' + a]; el.setAttribute(a, lang === 'id' ? (ID[en] !== undefined ? ID[en] : en) : en); });
+  };
+  applyStatic();
+  const langHooks = [];
+  const darkOn = () => root.getAttribute('data-theme') === 'dark';
+  const syncTheme = () => {
+    const b = $('#themeBtn'); if (!b) return;
+    b.setAttribute('aria-label', T(darkOn() ? 'Switch to light mode' : 'Switch to dark mode'));
+    const u = $('#themeIco use'); if (u) u.setAttribute('href', darkOn() ? '#i-sun' : '#i-moon');
+    const m = document.querySelector('meta[name="theme-color"]'); if (m) m.setAttribute('content', darkOn() ? '#120E1A' : '#FFF8EF');
+  };
+  const syncLang = () => {
+    $$('#langBtn .l').forEach(s => s.classList.toggle('on', s.getAttribute('data-l') === lang));
+    const b = $('#langBtn'); if (b) b.setAttribute('aria-label', T(lang === 'id' ? 'Switch to English' : 'Switch to Indonesian'));
+  };
+  const setLang = l => {
+    lang = l === 'id' ? 'id' : 'en'; root.lang = lang;
+    try { localStorage.setItem('lang', lang); } catch (e) {}
+    applyStatic(); langHooks.forEach(f => { try { f(); } catch (e) {} }); syncLang(); syncTheme();
+  };
+  const themeBtn = $('#themeBtn'), langBtn = $('#langBtn');
+  if (themeBtn) themeBtn.addEventListener('click', () => {
+    const t = darkOn() ? 'light' : 'dark';
+    root.setAttribute('data-theme', t);
+    try { localStorage.setItem('theme', t); } catch (e) {}
+    syncTheme();
+  });
+  if (langBtn) langBtn.addEventListener('click', () => setLang(lang === 'id' ? 'en' : 'id'));
+  syncLang(); syncTheme();
+
   /* ---------- intro ---------- */
   (function intro() {
     const intro = $('#intro');
     if (!root.classList.contains('intro-on')) { root.classList.add('ready'); intro && intro.remove(); return; }
-    try { sessionStorage.setItem('introSeen', '1'); } catch (e) {}
     scrollTo(0, 0);
     const A = [], T = [];
     let ended = false, raf = 0;
@@ -924,7 +1161,7 @@ footer a{color:var(--blush)}
   secs.forEach(s => so.observe(s));
 
   /* ---------- reveal + counters ---------- */
-  const fmt = (n, el) => (el.dataset.pre || '') + n + (el.dataset.suf || '');
+  const fmt = (n, el) => { let u = el.dataset.suf || ''; if (lang === 'id' && u === 'M') u = ' jt'; return (el.dataset.pre || '') + n + u; };
   const ro = new IntersectionObserver(es => es.forEach(e => {
     if (!e.isIntersecting) return;
     e.target.classList.add('in'); ro.unobserve(e.target);
@@ -935,6 +1172,10 @@ footer a{color:var(--blush)}
       requestAnimationFrame(step);
     });
   }), { threshold: .12, rootMargin: '0px 0px -6% 0px' });
+  const paintCounts = () => $$('[data-count]').forEach(el => { el.textContent = fmt(+el.dataset.to, el); });
+  langHooks.push(paintCounts); if (lang === 'id') paintCounts();
+  const tp = $('textPath'); if (tp) { const en = tp.textContent; const idt = 'SPESIALIS MEDIA SOSIAL \u2022 KREATOR KONTEN \u2022 ';
+    const paintTp = () => { tp.textContent = lang === 'id' ? idt : en; }; langHooks.push(paintTp); paintTp(); }
   const qa = /qa/.test(location.search);
   if (noanim || qa) $$('.reveal,.rv').forEach(el => el.classList.add('in')); else $$('.reveal,.rv').forEach(el => ro.observe(el));
 
@@ -947,11 +1188,16 @@ footer a{color:var(--blush)}
 
   /* ---------- about highlights ---------- */
   const hb = $$('.hl button'), hp = $('#hlPanel');
-  hb.forEach(b => b.addEventListener('click', () => {
+  const curB = () => hb.find(b => b.getAttribute('aria-pressed') === 'true') || hb[0];
+  const paintHL = b => {
+    if (!b) return;
     hb.forEach(x => x.setAttribute('aria-pressed', x === b));
     hp.innerHTML = ''; const h = document.createElement('h3'), p = document.createElement('p');
-    h.textContent = b.dataset.t; p.textContent = b.dataset.d; hp.append(h, p);
-  }));
+    h.textContent = T(b.dataset.t); p.textContent = T(b.dataset.d); hp.append(h, p);
+  };
+  hb.forEach(b => b.addEventListener('click', () => paintHL(b)));
+  paintHL(curB());
+  langHooks.push(() => paintHL(curB()));
 
   /* ---------- work: story viewer ---------- */
   const cards = $$('.wcard'), n = cards.length, bars = $('#sBars'), scr = $('#screen');
@@ -966,14 +1212,14 @@ footer a{color:var(--blush)}
     $$('i', bars).forEach((b, k) => { b.className = k < cur ? 'on' : k === cur ? 'cur' : ''; });
     void bars.offsetWidth;
     scr.style.setProperty('--tone', tones[d.tone] || tones.b);
-    $('#sBrand').textContent = d.brand; $('#sWhen').textContent = d.when;
-    $('#sKick').textContent = d.kick; $('#sBig').textContent = d.big; $('#sLabel').textContent = d.label;
+    $('#sBrand').textContent = T(d.brand); $('#sWhen').textContent = T(d.when);
+    $('#sKick').textContent = T(d.kick); $('#sBig').textContent = T(d.big); $('#sLabel').textContent = T(d.label);
     const ch = $('#sChart'); ch.innerHTML = '';
     if (d.from !== undefined && d.to) {
       const max = Math.max(+d.from, +d.to);
       [[d.from, d.fl], [d.to, d.tl]].forEach(([v, l]) => {
         const col = document.createElement('div'), b = document.createElement('i'), t = document.createElement('span');
-        b.style.height = Math.max(6, Math.round(+v / max * 76)) + 'px'; t.textContent = l; col.append(b, t); ch.append(col);
+        b.style.height = Math.max(6, Math.round(+v / max * 76)) + 'px'; t.textContent = T(l); col.append(b, t); ch.append(col);
       });
     }
     const body = $('#sBody'); body.style.animation = 'none'; void body.offsetWidth; body.style.animation = '';
@@ -992,8 +1238,12 @@ footer a{color:var(--blush)}
     c.addEventListener('click', e => { if (!e.target.closest('a')) show(i); });
     $('h3 button', c).addEventListener('click', () => show(i));
   });
-  cards.forEach(c => { const d = c.dataset; if (d.from !== undefined && d.to) { const mx = Math.max(+d.from, +d.to), ba = document.createElement('div'); ba.className = 'ba'; ba.setAttribute('aria-hidden', 'true'); ba.style.setProperty('--bh', '52px'); ba.innerHTML = [[d.from, d.fl], [d.to, d.tl]].map(([v, l]) => `<div><i style="--h:${Math.max(.04, +v / mx).toFixed(3)}"></i><span>${l}</span></div>`).join(''); c.querySelector('.w-big').after(ba); } });
+  const paintBA = () => cards.forEach(c => { const d = c.dataset; if (d.from === undefined || !d.to) return; const mx = Math.max(+d.from, +d.to); let ba = c.querySelector('.ba');
+    if (!ba) { ba = document.createElement('div'); ba.className = 'ba'; ba.setAttribute('aria-hidden', 'true'); ba.style.setProperty('--bh', '52px'); c.querySelector('.w-big').after(ba); }
+    ba.innerHTML = [[d.from, d.fl], [d.to, d.tl]].map(([v, l]) => `<div><i style="--h:${Math.max(.04, +v / mx).toFixed(3)}"></i><span>${T(l)}</span></div>`).join(''); });
+  paintBA();
   show(0);
+  langHooks.push(() => { paintBA(); show(cur < 0 ? 0 : cur); });
 
   /* ---------- web feel: progress, timeline, hero parallax, tilt, magnets, cursor ---------- */
   const fine = matchMedia('(pointer:fine)').matches;
@@ -1019,17 +1269,28 @@ footer a{color:var(--blush)}
     document.addEventListener('pointerover', e => cur.classList.toggle('hot', !!e.target.closest('a,button,.wcard')));
   }
 
-  const sw = $('#swap');
-  if (sw && !reduce) { const W = ['Content strategy', 'Short-form video', 'Copywriting', 'KOL campaigns', 'Social analytics']; let k = 0;
-    setInterval(() => { if (document.hidden) return; k = (k + 1) % W.length;
-      sw.animate([{ opacity: 1, transform: 'none' }, { opacity: 0, transform: 'translateY(-60%)' }], { duration: 260, easing: 'ease-in' }).onfinish = () => { sw.textContent = W[k]; sw.animate([{ opacity: 0, transform: 'translateY(60%)' }, { opacity: 1, transform: 'none' }], { duration: 320, easing: 'cubic-bezier(.2,.8,.2,1)' }); }; }, 2400); }
+  const sw = $('#swap'), W = ['Content strategy', 'Short-form video', 'Copywriting', 'KOL campaigns', 'Social analytics'];
+  let wk = 0;
+  if (sw) {
+    sw.textContent = T(W[0]);
+    langHooks.push(() => { sw.textContent = T(W[wk]); });
+    if (!reduce) setInterval(() => { if (document.hidden) return; wk = (wk + 1) % W.length;
+      sw.animate([{ opacity: 1, transform: 'none' }, { opacity: 0, transform: 'translateY(-60%)' }], { duration: 260, easing: 'ease-in' }).onfinish = () => { sw.textContent = T(W[wk]); sw.animate([{ opacity: 0, transform: 'translateY(60%)' }, { opacity: 1, transform: 'none' }], { duration: 320, easing: 'cubic-bezier(.2,.8,.2,1)' }); }; }, 2400);
+  }
 
   const msgs = [['+2,700', 'SOZO Instagram, 5 months'], ['38M', 'TikTok views in 1 year'], ['+144%', 'TikTok followers, 70K to 171K'], ['Top 3', 'Creative Department KPIs'], ['+24.7%', 'Altuzs impressions in 5 months']];
-  const cyc = (el, off) => { if (!el) return; let i = off; const set = () => { const m = msgs[i++ % msgs.length]; $('b', el).textContent = m[0]; $('small', el).textContent = m[1]; el.classList.remove('pop'); void el.offsetWidth; el.classList.add('pop'); }; if (!reduce) setInterval(() => { if (!document.hidden) set(); }, 3200); };
-  if (!reduce) { cyc($('#toastA'), 1); setTimeout(() => cyc($('#toastB'), 3), 1600); }
+  const paintToast = el => { if (!el || !el.__m) return; $('b', el).textContent = T(el.__m[0]); $('small', el).textContent = T(el.__m[1]); };
+  const cyc = (el, off) => { if (!el) return; el.__i = off;
+    el.__set = () => { el.__m = msgs[el.__i++ % msgs.length]; paintToast(el); el.classList.remove('pop'); void el.offsetWidth; el.classList.add('pop'); };
+    el.__set();
+    if (!reduce) setInterval(() => { if (!document.hidden) el.__set(); }, 3200);
+  };
+  const toastA = $('#toastA'), toastB = $('#toastB');
+  cyc(toastA, 1); if (toastB) setTimeout(() => cyc(toastB, 3), 1600);
+  langHooks.push(() => { paintToast(toastA); paintToast(toastB); });
 
   const cp = $('#copyMail');
-  if (cp) cp.addEventListener('click', async () => { const m = $('#copyMsg'); try { await navigator.clipboard.writeText('nurazizahtasyaputri8@gmail.com'); m.textContent = 'Email copied'; } catch (e) { m.textContent = 'Copy failed. Use the Email button instead.'; } setTimeout(() => m.textContent = '', 2600); });
+  if (cp) cp.addEventListener('click', async () => { const m = $('#copyMsg'); try { await navigator.clipboard.writeText('nurazizahtasyaputri8@gmail.com'); m.textContent = T('Email copied'); } catch (e) { m.textContent = T('Copy failed. Use the Email button instead.'); } setTimeout(() => m.textContent = '', 2600); });
 
   // QA hook: ?qa=1&at=work -> renders only that section (screenshot helper)
   if (qa) {
