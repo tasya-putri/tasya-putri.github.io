@@ -30,7 +30,7 @@
 <script>
 (function(){var d=document.documentElement;d.classList.add('js');
 try{var q0=location.search,mt=q0.match(/[?&]theme=(dark|light)/),ml=q0.match(/[?&]lang=(id|en)/);
-var th=mt?mt[1]:(localStorage.getItem('theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'));
+var th=mt?mt[1]:(localStorage.getItem('theme')||'light');
 d.setAttribute('data-theme',th);
 d.lang=ml?ml[1]:(localStorage.getItem('lang')||((navigator.language||'en').toLowerCase().indexOf('id')===0?'id':'en'));}catch(e){d.setAttribute('data-theme','light');d.lang='en';}
 if(/qa/.test(location.search)){var st=document.createElement('style');st.textContent='*,*::before,*::after{animation:none!important;transition:none!important}';d.appendChild(st);}
