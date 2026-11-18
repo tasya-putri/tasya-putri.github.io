@@ -11,6 +11,7 @@ Static one-page portfolio for Nur Azizah Tasya Putri, Social Media Specialist an
 index.html                     single page, inline CSS/JS, no build step
 assets/Tasya-Putri-Resume.pdf  current resume (linked with download)
 assets/images/                 photo, silhouette, OG image, favicon, resume preview
+                               (silhouette.png = outline of tasya.png, same pixel grid; used only in the intro)
 source/resume.tex              LaTeX source of the resume
 source/og.html                 template used to render the OG image
 ```

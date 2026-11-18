@@ -45,7 +45,7 @@ try{if(!sessionStorage.getItem('introSeen')&&!matchMedia('(prefers-reduced-motio
   --r:28px;--ease:cubic-bezier(.2,.8,.2,1);--spring:cubic-bezier(.34,1.56,.64,1);
 }
 *,*::before,*::after{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%;scroll-padding-top:84px;overflow-x:clip}
+html{-webkit-text-size-adjust:100%;scroll-padding-top:104px;overflow-x:clip}
 @media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
 body{margin:0;background:var(--cream);color:var(--ink);font:400 1.0625rem/1.65 var(--body);overflow-x:hidden;
   background-image:radial-gradient(rgba(43,27,58,.07) 1px,transparent 1.4px);background-size:22px 22px}
@@ -72,8 +72,9 @@ button{font:inherit;color:inherit;cursor:pointer}
 .js.ready .mask>span{transform:none;transition:transform 1s var(--ease);transition-delay:var(--dl,0s)}
 
 /* ---------- nav ---------- */
-.nav{position:sticky;top:0;z-index:50;background:rgba(255,248,239,.86);backdrop-filter:saturate(1.4) blur(14px);-webkit-backdrop-filter:saturate(1.4) blur(14px);border-bottom:1px solid rgba(43,27,58,.1)}
-.nav .wrap{display:flex;align-items:center;gap:14px;min-height:68px}
+.nav{position:sticky;top:12px;z-index:50;margin:12px auto 0;width:min(1180px,100% - 24px);border-radius:34px;background:rgba(255,253,248,.84);backdrop-filter:saturate(1.5) blur(16px);-webkit-backdrop-filter:saturate(1.5) blur(16px);border:2px solid var(--ink);box-shadow:4px 5px 0 var(--ink)}
+.nav .wrap{display:flex;align-items:center;gap:14px;width:auto;margin-inline:18px}
+.nav .wrap:first-child{min-height:62px}
 .brand{display:flex;align-items:center;gap:12px;text-decoration:none;font-family:var(--display);font-weight:600;font-size:1.2rem;letter-spacing:-.01em}
 .avatar{position:relative;width:var(--s,44px);height:var(--s,44px);flex:none}
 .avatar>svg{position:absolute;inset:0;width:100%;height:100%;transform:rotate(-90deg)}
@@ -96,7 +97,7 @@ button{font:inherit;color:inherit;cursor:pointer}
 
 /* ---------- buttons / chips ---------- */
 .btn{display:inline-flex;align-items:center;gap:10px;padding:14px 24px;border-radius:99px;font-weight:800;text-decoration:none;border:2px solid var(--ink);background:var(--paper);color:var(--ink);transition:transform .25s var(--spring),background .2s,box-shadow .2s;min-height:50px}
-.btn:hover{transform:translateY(-3px) rotate(-1deg);box-shadow:4px 5px 0 var(--ink)}
+.btn:hover{transform:translate(var(--mx,0px),calc(var(--my,0px) - 3px)) rotate(-1deg);box-shadow:4px 5px 0 var(--ink)}
 .btn.primary{background:var(--coral)}
 .btn.dark{background:var(--ink);color:var(--cream)}
 .btn.dark:hover{box-shadow:4px 5px 0 var(--coral)}
@@ -117,49 +118,132 @@ section{padding:clamp(4.5rem,11vw,9rem) 0;position:relative}
 .sh p{margin-top:18px;color:var(--ink2);font-size:1.12rem;max-width:56ch}
 
 /* ---------- hero ---------- */
-.hero{padding:clamp(2.5rem,6vw,5rem) 0 clamp(3rem,7vw,6rem);overflow:hidden}
-.hero .wrap{display:grid;gap:clamp(2rem,5vw,4rem);align-items:center}
-@media (min-width:900px){.hero .wrap{grid-template-columns:1.12fr .88fr}}
+.hero{padding:clamp(1.8rem,4vw,3.4rem) 0 clamp(3.5rem,8vw,6.5rem);overflow:hidden;position:relative;isolation:isolate}
+.mesh{position:absolute;inset:0;z-index:-1;pointer-events:none;filter:blur(70px);opacity:.8}
+.mesh i{position:absolute;border-radius:50%;animation:drift 16s ease-in-out infinite alternate}
+.mesh i:nth-child(1){width:42vmax;height:42vmax;left:-10vmax;top:-12vmax;background:var(--blush)}
+.mesh i:nth-child(2){width:36vmax;height:36vmax;right:-8vmax;top:4vmax;background:var(--lilac);animation-delay:-5s}
+.mesh i:nth-child(3){width:28vmax;height:28vmax;left:34%;bottom:-14vmax;background:var(--butter);animation-delay:-9s}
+@keyframes drift{to{transform:translate3d(5vmax,3vmax,0) scale(1.14)}}
+.hero .wrap{display:grid;gap:clamp(2.4rem,5vw,4rem);align-items:center}
+@media (min-width:900px){.hero .wrap{grid-template-columns:1.08fr .92fr}}
 .loc{display:inline-flex;align-items:center;gap:8px;padding:7px 15px 7px 12px;border-radius:99px;background:var(--paper);border:1.5px solid rgba(43,27,58,.16);font-weight:700;font-size:.92rem}
 .loc .ico{width:18px;height:18px;color:var(--coral-d)}
 .name{font-family:var(--display);font-weight:300;font-size:clamp(3.5rem,14.2vw,9.6rem);line-height:.92;letter-spacing:-.045em;margin:22px 0 10px;white-space:nowrap}
+@media (min-width:900px){.name{font-size:clamp(4rem,9.4vw,8.6rem)}}
+.name .mask{padding-right:.12em;margin-right:-.12em}
 .name em{font-style:italic;font-weight:700;color:var(--coral-d)}
 .role{font-family:var(--display);font-size:clamp(1.15rem,3.2vw,1.85rem);font-weight:500;letter-spacing:-.01em}
 .role i{color:var(--lilac-d)}
+.focus{display:inline-flex;align-items:center;gap:10px;margin-top:18px;padding:6px 18px 6px 7px;border-radius:99px;background:var(--ink);color:var(--cream);font-weight:700}
+.focus b{padding:3px 11px;border-radius:99px;background:var(--coral);color:var(--ink);font-size:.74rem;letter-spacing:.1em;text-transform:uppercase}
+.swap{display:inline-block;min-width:12ch}
 .lead{margin-top:20px;font-size:clamp(1.08rem,2vw,1.28rem);color:var(--ink2);max-width:46ch}
 .cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
-.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:clamp(2rem,5vw,3.2rem)}
-@media (min-width:640px){.stats{grid-template-columns:repeat(4,1fr)}}
-.stat{padding:16px 16px 14px;border-radius:22px;background:var(--paper);border:1.5px solid rgba(43,27,58,.14)}
-.stat:nth-child(1){background:var(--blush)}.stat:nth-child(2){background:var(--lilac)}.stat:nth-child(3){background:var(--butter)}
-.stat b{display:block;font-family:var(--display);font-weight:600;font-size:clamp(1.7rem,4vw,2.4rem);line-height:1.05;letter-spacing:-.03em}
-.stat span{display:block;margin-top:4px;font-size:.88rem;line-height:1.35;color:var(--ink2);font-weight:600}
-.stat:nth-child(-n+3) span{color:var(--ink)}
-.hero-art{position:relative;justify-self:center;width:min(100%,430px);padding:14px 0 30px}
-.blob{position:absolute;z-index:0;will-change:transform}
-.blob svg{width:100%;height:100%}
-.blob.a{width:270px;height:270px;right:-60px;top:-30px;color:var(--blush)}
-.blob.b{width:200px;height:200px;left:-70px;bottom:20px;color:var(--lilac)}
-.blob.c{width:130px;height:130px;right:10px;bottom:-20px;color:var(--butter)}
-.post{position:relative;z-index:1;background:var(--paper);border:2px solid var(--ink);border-radius:30px;box-shadow:10px 12px 0 var(--ink);overflow:hidden;transform:rotate(1.6deg);transition:transform .5s var(--ease)}
-.post:hover{transform:rotate(0)}
+.proof{display:flex;flex-wrap:wrap;gap:10px;margin-top:clamp(1.8rem,4vw,2.6rem)}
+.proof li{display:flex;align-items:baseline;gap:8px;padding:9px 16px;border-radius:99px;background:var(--paper);border:1.5px solid rgba(43,27,58,.16);font-weight:700;font-size:.92rem;color:var(--ink2)}
+.proof b{font-family:var(--display);font-size:1.25rem;font-weight:700;color:var(--ink);letter-spacing:-.02em}
+.proof li:nth-child(1) b{color:var(--coral-d)}.proof li:nth-child(2) b{color:var(--lilac-d)}
+.hero-art{--px:0;--py:0;position:relative;justify-self:center;width:min(100%,440px);padding:18px 0 34px}
+.post{position:relative;z-index:1;background:var(--paper);border:2px solid var(--ink);border-radius:30px;box-shadow:10px 12px 0 var(--ink);overflow:hidden;transform:rotate(1.6deg) perspective(900px) rotateY(calc(var(--px) * 7deg)) rotateX(calc(var(--py) * -6deg));transition:transform .25s ease-out}
 .post-h{display:flex;align-items:center;gap:12px;padding:12px 16px}
 .post-h b{display:block;line-height:1.2;font-weight:800}
 .post-h small{display:block;color:var(--ink2);font-weight:600;font-size:.84rem}
 .post-h .dots{margin-left:auto;display:flex;gap:4px}
 .post-h .dots i{width:5px;height:5px;border-radius:50%;background:var(--ink)}
-.photo{width:100%;aspect-ratio:896/1195;object-fit:cover;object-position:50% 50%;background:#EAEBEF}
+.photo{width:100%;height:auto;aspect-ratio:896/960;object-fit:cover;object-position:50% 100%;background:#EAEBEF}
 .post-f{padding:12px 16px 16px}
 .acts{display:flex;gap:14px;align-items:center;color:var(--ink)}
 .acts .ico{width:26px;height:26px}
 .acts .sp{margin-left:auto}
 .post-f p{margin-top:8px;font-size:.95rem;line-height:1.45}
 .post-f p b{font-weight:800}
-.sticker{position:absolute;z-index:2;font-weight:800;font-size:.9rem;padding:9px 15px;border-radius:99px;border:2px solid var(--ink);background:var(--butter);box-shadow:3px 4px 0 var(--ink);transform:rotate(-6deg);white-space:nowrap}
-.sticker.s1{left:-14px;bottom:128px;background:var(--lilac)}
+.post-f p b::after{content:" \00B7 ";font-weight:400}
+.sticker{position:absolute;z-index:3;font-weight:800;font-size:.9rem;padding:9px 15px;border-radius:99px;border:2px solid var(--ink);background:var(--butter);box-shadow:3px 4px 0 var(--ink);transform:rotate(-6deg);white-space:nowrap}
+.sticker.s1{right:-18px;bottom:128px;background:var(--lilac)}
 .sticker.s2{right:-10px;top:-4px;background:var(--coral);transform:rotate(5deg)}
 .sticker .ico{width:16px;height:16px;display:inline-block;vertical-align:-2px;margin-right:4px}
-@media (max-width:520px){.sticker.s1{left:-4px}.sticker.s2{right:-2px}}
+.toast{position:absolute;z-index:3;display:flex;align-items:center;gap:10px;padding:10px 18px 10px 10px;border-radius:20px;background:var(--paper);border:2px solid var(--ink);box-shadow:4px 5px 0 var(--ink);white-space:nowrap;transform:translate(calc(var(--px) * -12px),calc(var(--py) * -8px));transition:transform .3s ease-out}
+.toast .ti{display:grid;place-items:center;width:38px;height:38px;border-radius:50%;background:var(--coral)}
+.toast.tB .ti{background:var(--lilac)}
+.toast b{display:block;font-family:var(--display);font-size:1.3rem;line-height:1;letter-spacing:-.03em}
+.toast small{display:block;margin-top:2px;font-weight:700;font-size:.78rem;color:var(--ink2);line-height:1.2}
+.toast.pop b,.toast.pop small{animation:pop .5s var(--spring)}
+@keyframes pop{from{opacity:0;transform:translateY(8px) scale(.9)}to{opacity:1;transform:none}}
+.toast.tA{right:-48px;top:70px}
+.toast.tB{left:-40px;bottom:150px}
+.badge{position:absolute;z-index:3;left:-52px;top:24%;width:118px;height:118px;filter:drop-shadow(3px 4px 0 var(--ink))}
+.badge .rot{transform-origin:80px 80px;animation:spin 24s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+@media (max-width:899px){.badge{left:-8px;width:84px;height:84px}}
+@media (max-width:520px){
+  .hero-art{width:min(100%,380px);padding:14px 10px 28px}
+  .toast.tB,.sticker.s1,.badge{display:none}
+  .toast.tA{right:2px;top:auto;bottom:92px;left:auto}
+  .sticker.s2{right:6px;top:2px}
+  .post{box-shadow:6px 8px 0 var(--ink)}
+  .cta-row .btn{padding:12px 18px}
+  .cta-row .btn.primary{flex:1 1 100%;justify-content:center}
+  .proof li{flex:1 1 100%}
+}
+
+/* ---------- waves ---------- */
+.wave{display:block;width:100%;height:clamp(26px,4.4vw,58px);margin-bottom:-1px}
+
+/* ---------- numbers (bento) ---------- */
+.js .rv{opacity:0;translate:0 26px;transition:opacity .8s var(--ease) var(--dl,0s),translate .8s var(--ease) var(--dl,0s),transform .2s ease-out}
+.js .rv.in{opacity:1;translate:none}
+.bento{display:grid;gap:14px;grid-template-columns:repeat(2,1fr)}
+@media (min-width:900px){.bento{grid-template-columns:repeat(4,1fr);grid-auto-rows:minmax(200px,auto);gap:18px}.bt.h2{grid-row:span 2}}
+.bt.w2{grid-column:span 2}
+.bt{--rx:0deg;--ry:0deg;position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:space-between;gap:12px;padding:22px;border-radius:var(--r);border:2px solid var(--ink);background:var(--paper);box-shadow:6px 7px 0 var(--ink);transform:perspective(900px) rotateX(var(--rx)) rotateY(var(--ry))}
+.bt .k{font-weight:800;font-size:.76rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink2)}
+.bt .n{font-family:var(--display);font-weight:600;font-size:clamp(2.4rem,5.4vw,4rem);line-height:.95;letter-spacing:-.045em}
+.bt .n.s{font-size:clamp(1.8rem,2.7vw,2.4rem);letter-spacing:-.04em}
+.bt .d{min-height:2.7em;font-weight:700;color:var(--ink2);line-height:1.35;font-size:.95rem}
+.bt.c-b{background:var(--blush)}.bt.c-l{background:var(--lilac)}.bt.c-y{background:var(--butter)}.bt.c-c{background:var(--coral)}
+.bt.c-c .k,.bt.c-c .d{color:var(--ink)}
+.bt.dark{background:radial-gradient(60% 80% at 100% 0%,rgba(229,91,154,.55),transparent 62%),radial-gradient(50% 70% at 0% 100%,rgba(139,111,224,.55),transparent 62%),var(--ink);color:var(--cream)}
+.bt.dark .k,.bt.dark .d{color:#E6DCF1}
+.bt.big .n{font-size:clamp(5rem,15vw,10.5rem);font-weight:500;letter-spacing:-.06em}
+.pill{display:inline-flex;padding:6px 14px;border-radius:99px;font-weight:700;font-size:.88rem;background:rgba(255,255,255,.14);color:var(--cream)}
+.eq{display:flex;align-items:flex-end;gap:3px;height:76px}
+.eq i{flex:1;height:100%;border-radius:3px;background:linear-gradient(#FF7A6B,#8B6FE0);transform-origin:bottom;transform:scaleY(var(--a));animation:eq 1.5s ease-in-out infinite alternate;animation-delay:calc(var(--d) * -1)}
+@keyframes eq{from{transform:scaleY(.12)}to{transform:scaleY(var(--a))}}
+.ba{--bh:64px;display:flex;align-items:flex-end;gap:12px;height:calc(var(--bh) + 24px)}
+.ba div{flex:1;height:100%;display:grid;align-content:end;gap:4px;font-weight:800;font-size:.8rem;text-align:center}
+.js .ba i{display:block;height:calc(var(--h) * var(--bh));min-height:6px;border-radius:10px 10px 4px 4px;background:var(--ink);transform:scaleY(0);transform-origin:bottom;transition:transform 1.1s var(--ease) .3s}
+.ba div:first-child i{background:rgba(43,27,58,.4)}
+.js .in .ba i{transform:none}
+.duo{display:grid;grid-template-columns:repeat(2,auto);justify-content:space-around;gap:16px;height:100%;align-content:center}
+.duo .n{font-size:clamp(2.2rem,5vw,3.6rem)}
+
+/* ---------- timeline ---------- */
+@media (min-width:900px){
+  .feed::before,.feed::after{content:"";position:absolute;left:265px;top:34px;bottom:34px;width:4px;border-radius:4px}
+  .feed::before{background:rgba(43,27,58,.14)}
+  .feed::after{background:linear-gradient(#FF7A6B,#E55B9A,#8B6FE0);transform-origin:top;transform:scaleY(var(--p,0))}
+  .item{position:relative}
+  .when b{font-size:1.2rem}
+  .item::before{content:"";position:absolute;left:256px;top:30px;width:22px;height:22px;border-radius:50%;background:var(--paper);border:4px solid var(--ink);z-index:1;transition:background .4s,transform .5s var(--spring);transform:scale(.6)}
+  .item.in::before{background:var(--coral);transform:none}
+}
+
+/* ---------- services extras ---------- */
+.services{--mx:70%;--my:20%;overflow:hidden}
+.services::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(460px circle at var(--mx) var(--my),rgba(229,91,154,.3),transparent 62%)}
+.services .wrap{position:relative}
+.sv-grid{counter-reset:s}
+.sv{position:relative}
+.sv::after{counter-increment:s;content:counter(s,decimal-leading-zero);position:absolute;right:22px;top:16px;font-family:var(--display);font-size:2.2rem;font-weight:300;opacity:.35;letter-spacing:-.04em}
+
+/* ---------- extras ---------- */
+.progress{position:fixed;top:0;left:0;right:0;height:4px;z-index:120;transform-origin:left;transform:scaleX(0);background:linear-gradient(90deg,#FF7A6B,#E55B9A,#8B6FE0)}
+.cursor{position:fixed;left:0;top:0;width:36px;height:36px;border:2px solid var(--coral-d);border-radius:50%;pointer-events:none;z-index:300;opacity:0;transition:opacity .3s,width .25s,height .25s,margin .25s,background .25s}
+.cursor.on{opacity:.85}
+.cursor.hot{width:56px;height:56px;margin:-10px 0 0 -10px;background:rgba(255,122,107,.22)}
+@media (pointer:coarse){.cursor{display:none}}
+.copied{font-weight:800;color:var(--lilac-d);align-self:center}
 
 /* ---------- marquee ---------- */
 .marquee{background:var(--ink);color:var(--cream);overflow:hidden;padding:18px 0;border-block:2px solid var(--ink);transform:rotate(-1deg);margin:-1rem -2vw 0}
@@ -193,7 +277,7 @@ section{padding:clamp(4.5rem,11vw,9rem) 0;position:relative}
 .hl-panel p{margin-top:6px}
 
 /* ---------- skills ---------- */
-.skills{background:var(--blush2);border-block:2px solid var(--ink)}
+.skills{background:var(--blush2)}
 .sk-grid{display:grid;gap:clamp(14px,2vw,22px)}
 @media (min-width:760px){.sk-grid{grid-template-columns:repeat(2,1fr)}}
 .sk{padding:24px;border-radius:var(--r);background:var(--paper);border:2px solid var(--ink);transition:transform .35s var(--spring)}
@@ -206,7 +290,7 @@ section{padding:clamp(4.5rem,11vw,9rem) 0;position:relative}
 /* ---------- experience ---------- */
 .feed{display:grid;gap:clamp(18px,3vw,30px);position:relative}
 .item{display:grid;gap:10px}
-@media (min-width:900px){.item{grid-template-columns:200px 1fr;gap:34px}}
+@media (min-width:900px){.item{grid-template-columns:250px 1fr;gap:34px}}
 .when{font-family:var(--display);font-weight:500;font-size:1.1rem;line-height:1.3;color:var(--ink2);padding-top:24px;white-space:nowrap}
 .when b{display:block;font-weight:700;color:var(--ink);font-size:1.3rem}
 .card{position:relative;background:var(--paper);border:2px solid var(--ink);border-radius:var(--r);padding:clamp(18px,3vw,28px);box-shadow:7px 8px 0 var(--ink);transition:transform .35s var(--ease),box-shadow .35s var(--ease)}
@@ -306,7 +390,7 @@ section{padding:clamp(4.5rem,11vw,9rem) 0;position:relative}
 .res .note{margin-top:14px;font-size:.95rem;color:var(--ink2);font-weight:600}
 
 /* ---------- contact ---------- */
-.contact{background:var(--butter);border-top:2px solid var(--ink)}
+.contact{background:var(--butter)}
 .contact h2{font-family:var(--display);font-weight:300;font-size:clamp(3rem,12vw,9rem);line-height:.92;letter-spacing:-.045em}
 .contact h2 em{font-style:italic;font-weight:700;color:var(--coral-d)}
 .contact .sub{margin-top:22px;font-size:1.2rem;max-width:44ch}
@@ -330,8 +414,9 @@ footer a{color:var(--blush)}
 .stage{position:relative;display:flex;flex-direction:column;align-items:center;gap:clamp(16px,3.5vh,30px);padding:20px}
 .ring-wrap{--d:min(54vmin,300px);position:relative;width:var(--d);height:var(--d);will-change:transform}
 .ring-wrap>svg{position:absolute;inset:0;width:100%;height:100%;transform:rotate(-90deg);overflow:visible}
-.ring-wrap .ring-face{position:absolute;inset:7%;border-radius:50%;overflow:hidden;background:var(--cream)}
-.sil{position:absolute;left:50%;bottom:-3%;height:104%;width:auto;max-width:none;transform:translateX(-50%)}
+.ring-wrap .ring-face{position:absolute;inset:7%;border-radius:50%;overflow:hidden;background:#EEEDF2}
+.sil-l img{filter:drop-shadow(0 0 1.2px #2B1B3A)}
+.scan{position:absolute;left:0;right:0;top:0;height:4px;margin-top:-2px;background:linear-gradient(90deg,transparent,#fff 20%,#fff 80%,transparent);box-shadow:0 0 18px 6px rgba(229,91,154,.75),0 0 40px 14px rgba(139,111,224,.5);opacity:0;z-index:3}
 .ring-draw{stroke-dasharray:591;stroke-dashoffset:591}
 .fl{position:absolute;display:flex;align-items:center;gap:6px;padding:9px 14px;border-radius:99px;background:var(--paper);border:2px solid var(--ink);box-shadow:3px 4px 0 var(--ink);font-weight:800;font-size:.95rem;white-space:nowrap;opacity:0;transform:scale(0)}
 .fl .ico{width:22px;height:22px}
@@ -359,12 +444,19 @@ footer a{color:var(--blush)}
   .m-set{flex-wrap:wrap;justify-content:center}
   .blob{transform:none!important}
   .s-bars i.cur::after{animation:none;transform:none}
+  .js .rv{opacity:1;translate:none;transition:none}
+  .js .ba i{transform:none;transition:none}
+  .eq i,.mesh i,.badge .rot{animation:none}
+  .feed::after{transform:scaleY(1)}
+  .item::before{transform:none}
   *{scroll-behavior:auto!important}
 }
 </style>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
+<div class="progress" id="progress" aria-hidden="true"></div>
+<div class="cursor" id="cursor" aria-hidden="true"></div>
 
 <!-- icon sprite -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
@@ -404,8 +496,9 @@ footer a{color:var(--blush)}
     <div class="ring-wrap" id="ringWrap">
       <svg viewBox="0 0 200 200" aria-hidden="true"><circle cx="100" cy="100" r="94" fill="none" stroke="rgba(43,27,58,.12)" stroke-width="8"/><circle id="ringDraw" class="ring-draw" cx="100" cy="100" r="94" fill="none" stroke="url(#rg)" stroke-width="8" stroke-linecap="round"/></svg>
       <div class="ring-face">
-        <img class="sil" id="sil" src="assets/images/silhouette.png" width="667" height="720" alt="">
-        <div class="face" id="introFace" style="opacity:0"><img src="assets/images/tasya.png" width="896" height="1195" alt=""></div>
+        <div class="face" id="introFace" style="clip-path:inset(0 0 100% 0)"><img src="assets/images/tasya.png" width="896" height="1195" alt=""></div>
+        <div class="face sil-l" id="silL"><img src="assets/images/silhouette.png" width="896" height="1195" alt=""></div>
+        <i class="scan" id="scan"></i>
       </div>
       <span class="fl round heart" data-pop><svg class="ico" aria-hidden="true"><use href="#i-heart"/></svg></span>
       <span class="fl round cmt" data-pop><svg class="ico" aria-hidden="true"><use href="#i-comment"/></svg></span>
@@ -443,28 +536,23 @@ footer a{color:var(--blush)}
 <main id="main">
 <!-- ============ HERO ============ -->
 <section class="hero" id="top" aria-labelledby="hero-title">
+  <div class="mesh" aria-hidden="true"><i></i><i></i><i></i></div>
   <div class="wrap">
     <div>
       <p class="loc reveal"><svg class="ico" aria-hidden="true"><use href="#i-pin"/></svg>Jakarta, Indonesia</p>
       <h1 class="name" id="hero-title"><span class="mask"><span>Tasya <em>Putri</em></span></span></h1>
       <p class="role"><span class="mask" style="--dl:.12s"><span>Social Media Specialist <i>&middot;</i> Content Creator</span></span></p>
+      <p class="focus reveal" style="--dl:.16s"><b>Focus</b><span class="swap" id="swap" aria-hidden="true">Content strategy</span><span class="sr">Content strategy, short-form video, copywriting, KOL campaigns, and social analytics</span></p>
       <p class="lead reveal" style="--dl:.2s">3 years of experience in social media management, content strategy, and short-form video for organic and Meta Ads campaigns.</p>
       <div class="cta-row reveal" style="--dl:.3s">
         <a class="btn primary" href="#work">View Work <svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></a>
         <a class="btn" href="assets/Tasya-Putri-Resume.pdf" download>Download CV <svg class="ico" aria-hidden="true"><use href="#i-dl"/></svg></a>
         <a class="btn dark" href="#contact">Contact <svg class="ico" aria-hidden="true"><use href="#i-mail"/></svg></a>
       </div>
-      <ul class="stats reveal" style="--dl:.4s" aria-label="Highlights">
-        <li class="stat"><b data-count data-to="3">3</b><span>years in social media and content</span></li>
-        <li class="stat"><b data-count data-to="144" data-pre="+" data-suf="%">+144%</b><span>TikTok followers in 1 year (70K to 171K)</span></li>
-        <li class="stat"><b data-count data-to="38" data-suf="M">38M</b><span>TikTok views in 1 year</span></li>
-        <li class="stat"><b>0 &rarr; 2,700</b><span>Instagram followers in 5 months</span></li>
-      </ul>
+      <ul class="proof reveal" style="--dl:.4s" aria-label="Highlights"><li><b>3 yrs</b>in social media</li><li><b>38M</b>TikTok views</li><li><b>Top 3</b>Creative Dept KPIs</li></ul>
     </div>
-    <div class="hero-art reveal" style="--dl:.15s">
-      <div class="blob a" data-speed="-.06" aria-hidden="true"><svg><use href="#blob1"/></svg></div>
-      <div class="blob b" data-speed=".05" aria-hidden="true"><svg><use href="#blob2"/></svg></div>
-      <div class="blob c" data-speed="-.03" aria-hidden="true"><svg><use href="#blob1"/></svg></div>
+    <div class="hero-art reveal" id="heroArt" style="--dl:.15s">
+      <svg class="badge" viewBox="0 0 160 160" aria-hidden="true"><defs><path id="circ" d="M80,80 m-60,0 a60,60 0 1,1 120,0 a60,60 0 1,1 -120,0"/></defs><circle cx="80" cy="80" r="78" fill="#FFE9A6" stroke="#2B1B3A" stroke-width="2.5"/><g class="rot"><text font-family="Nunito,sans-serif" font-weight="800" font-size="13" fill="#2B1B3A"><textPath href="#circ" textLength="372" lengthAdjust="spacing">SOCIAL MEDIA SPECIALIST &#8226; CONTENT CREATOR &#8226; </textPath></text></g><path d="M80 58l5.4 15.6L101 80l-15.6 5.4L80 101l-5.4-15.6L59 80l15.6-5.4z" fill="#2B1B3A"/></svg>
       <figure class="post" style="margin:0">
         <div class="post-h">
           <span class="avatar" style="--s:42px"><svg viewBox="0 0 200 200" aria-hidden="true"><circle cx="100" cy="100" r="94" fill="none" stroke="url(#rg)" stroke-width="8"/></svg><span class="ring-face"><span class="face"><img src="assets/images/tasya.png" width="896" height="1195" alt=""></span></span></span>
@@ -477,6 +565,8 @@ footer a{color:var(--blush)}
           <p><b>Social Media Specialist</b> Content strategy, short-form video, and campaigns that grow audiences.</p>
         </figcaption>
       </figure>
+      <div class="toast tA" id="toastA" aria-hidden="true"><span class="ti"><svg class="ico"><use href="#i-heart"/></svg></span><span><b>+2,700</b><small>SOZO Instagram, 5 months</small></span></div>
+      <div class="toast tB" id="toastB" aria-hidden="true"><span class="ti"><svg class="ico"><use href="#i-chart"/></svg></span><span><b>38M</b><small>TikTok views in 1 year</small></span></div>
       <span class="sticker s1"><svg class="ico" aria-hidden="true"><use href="#i-spark"/></svg>Content Creator</span>
       <span class="sticker s2">Meta Ads &amp; Organic</span>
     </div>
@@ -489,6 +579,23 @@ footer a{color:var(--blush)}
     <div class="m-set" aria-hidden="true"><span>Instagram</span><i></i><span>TikTok</span><i></i><span>LinkedIn</span><i></i><span>Meta Business Suite</span><i></i><span>Canva</span><i></i><span>CapCut</span><i></i><span>Instagram Insights</span><i></i><span>TikTok Analytics</span><i></i></div>
   </div>
 </div>
+
+<!-- ============ NUMBERS ============ -->
+<section class="numbers" id="numbers" aria-labelledby="nb-t">
+  <div class="wrap">
+    <div class="sh reveal"><span class="eyebrow">By the numbers</span><h2 id="nb-t">Growth you can <em>measure</em>.</h2></div>
+    <div class="bento">
+      <article class="bt dark big w2 h2 tilt rv"><p class="k">Mr. Bob Kampung Inggris &middot; TikTok</p><div><p class="n"><span data-count data-to="38" data-suf="M">38M</span></p><p class="d">TikTok views in 1 year</p></div><div class="eq" id="eq" aria-hidden="true"></div><div class="chips"><span class="pill">54M post impressions</span><span class="pill">2.5M likes</span></div></article>
+      <article class="bt c-b tilt rv" style="--dl:.05s"><p class="k">TikTok followers</p><p class="n"><span data-count data-to="144" data-pre="+" data-suf="%">+144%</span></p><div class="ba" aria-hidden="true"><div><i style="--h:.41"></i><span>70K</span></div><div><i style="--h:1"></i><span>171K</span></div></div><p class="d">1 year, Mr. Bob</p></article>
+      <article class="bt c-l tilt rv" style="--dl:.1s"><p class="k">Instagram followers</p><p class="n"><span data-count data-to="34" data-pre="+" data-suf="%">+34%</span></p><div class="ba" aria-hidden="true"><div><i style="--h:.75"></i><span>100K</span></div><div><i style="--h:1"></i><span>134K</span></div></div><p class="d">1 year, Mr. Bob</p></article>
+      <article class="bt c-y tilt rv" style="--dl:.05s"><p class="k">SOZO Hair Removal</p><p class="n s">0 &rarr; 2,700</p><div class="ba" aria-hidden="true"><div><i style="--h:.03"></i><span>0</span></div><div><i style="--h:1"></i><span>2,700</span></div></div><p class="d">Instagram followers in 5 months</p></article>
+      <article class="bt tilt rv" style="--dl:.1s"><p class="k">Altuzs Teknologi</p><p class="n s">600 &rarr; 1,622</p><div class="ba" aria-hidden="true"><div><i style="--h:.37"></i><span>600</span></div><div><i style="--h:1"></i><span>1,622</span></div></div><p class="d">Instagram followers; impressions +24.7% in 5 months</p></article>
+      <article class="bt c-c tilt rv"><p class="k">IELTS launch webinar</p><p class="n"><span data-count data-to="400">400</span></p><p class="d">participants, with a team of 2 content creators</p></article>
+      <article class="bt tilt rv" style="--dl:.05s"><p class="k">Creative Department KPIs</p><p class="n">Top 3</p><p class="d">Nominated Most Evolve Employee, Galaversary 2024</p></article>
+      <article class="bt w2 c-l tilt rv" style="--dl:.1s"><p class="k">Profile visits in 1 year</p><div class="duo"><div><p class="n"><span data-count data-to="50" data-pre="+" data-suf="%">+50%</span></p><p class="d">Instagram</p></div><div><p class="n"><span data-count data-to="100" data-pre="+" data-suf="%">+100%</span></p><p class="d">TikTok</p></div></div></article>
+    </div>
+  </div>
+</section>
 
 <!-- ============ ABOUT ============ -->
 <section class="about" id="about" aria-labelledby="about-t">
@@ -515,6 +622,7 @@ footer a{color:var(--blush)}
 </section>
 
 <!-- ============ SKILLS ============ -->
+<svg class="wave" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true" style="background:transparent"><path d="M0 34 C 200 6 400 62 720 32 S 1240 4 1440 30 V60 H0Z" fill="#FFE6EC"/><path d="M0 34 C 200 6 400 62 720 32 S 1240 4 1440 30" fill="none" stroke="#2B1B3A" stroke-width="2" vector-effect="non-scaling-stroke"/></svg>
 <section class="skills" id="skills" aria-labelledby="sk-t">
   <div class="wrap">
     <div class="sh reveal"><span class="eyebrow">Skills &amp; Tools</span><h2 id="sk-t">The <em>toolkit</em> behind the feed.</h2></div>
@@ -528,6 +636,7 @@ footer a{color:var(--blush)}
 </section>
 
 <!-- ============ EXPERIENCE ============ -->
+<svg class="wave" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true" style="background:#FFE6EC"><path d="M0 28 C 260 62 520 0 760 30 S 1230 58 1440 26 V60 H0Z" fill="#FFF8EF"/><path d="M0 28 C 260 62 520 0 760 30 S 1230 58 1440 26" fill="none" stroke="#2B1B3A" stroke-width="2" vector-effect="non-scaling-stroke"/></svg>
 <section id="experience" aria-labelledby="ex-t">
   <div class="wrap">
     <div class="sh reveal"><span class="eyebrow">Experience</span><h2 id="ex-t">A feed of <em>real results</em>.</h2></div>
@@ -617,7 +726,8 @@ footer a{color:var(--blush)}
 </section>
 
 <!-- ============ WORK ============ -->
-<section class="work" id="work" aria-labelledby="wk-t" style="background:var(--blush2);border-block:2px solid var(--ink)">
+<svg class="wave" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true" style="background:transparent"><path d="M0 30 C 180 58 420 4 700 34 S 1200 56 1440 22 V60 H0Z" fill="#FFE6EC"/><path d="M0 30 C 180 58 420 4 700 34 S 1200 56 1440 22" fill="none" stroke="#2B1B3A" stroke-width="2" vector-effect="non-scaling-stroke"/></svg>
+<section class="work" id="work" aria-labelledby="wk-t" style="background:var(--blush2)">
   <div class="wrap">
     <div class="sh reveal"><span class="eyebrow">Selected Work</span><h2 id="wk-t">Campaigns that <em>moved the numbers</em>.</h2><p>Tap a card or swipe through the story to see the results.</p></div>
     <div class="layout">
@@ -654,9 +764,9 @@ footer a{color:var(--blush)}
           <ul class="bl"><li>Trend-driven Reels and educational storytelling for a beauty clinic brand under Seven Retail.</li><li>Organic Reels reached 8,632, 8,628, and 7,272 views.</li></ul>
           <div class="links"><a href="https://www.instagram.com/reel/DVqt27TErY1/" target="_blank" rel="noopener">Reel 1 <svg class="ico" aria-hidden="true"><use href="#i-out"/></svg><span class="sr">(opens Instagram)</span></a><a href="https://www.instagram.com/reel/DVv6swskiAP/" target="_blank" rel="noopener">Reel 2 <svg class="ico" aria-hidden="true"><use href="#i-out"/></svg><span class="sr">(opens Instagram)</span></a><a href="https://www.instagram.com/reel/DWBcq9SkrjU/" target="_blank" rel="noopener">Reel 3 <svg class="ico" aria-hidden="true"><use href="#i-out"/></svg><span class="sr">(opens Instagram)</span></a></div>
         </article>
-        <article class="wcard reveal" data-i="3" data-tone="b" data-brand="Altuzs Teknologi Indonesia" data-when="Instagram, 5 months" data-kick="Instagram growth" data-big="+89.9%" data-label="Instagram followers, 600 to 1,622" data-from="600" data-to="1622" data-fl="600" data-tl="1,622">
+        <article class="wcard reveal" data-i="3" data-tone="b" data-brand="Altuzs Teknologi Indonesia" data-when="Instagram, 5 months" data-kick="Instagram growth" data-big="600 → 1,622" data-label="Instagram followers, 600 to 1,622" data-from="600" data-to="1622" data-fl="600" data-tl="1,622">
           <div class="w-top"><h3><button type="button" aria-label="Show Altuzs results in the story viewer">Altuzs Instagram</button></h3><div class="chips"><span class="chip">Instagram</span><span class="chip l">Edutainment</span></div></div>
-          <p class="w-big">+89.9%<small>600 to 1,622 followers</small></p>
+          <p class="w-big">600 &rarr; 1,622<small>followers in 5 months</small></p>
           <ul class="bl"><li>Impressions up 24.7% within 5 months through targeted content campaigns and audience segmentation.</li><li>Reels views rose from 300&ndash;500 to 3,000&ndash;4,500+; carousel views from 250 to 1,000+.</li></ul>
         </article>
         <article class="wcard reveal" data-i="4" data-tone="l" data-brand="Mr. Bob Academia" data-when="IELTS launch, Mar 2025" data-kick="Event coordination" data-big="400" data-label="participants in the IELTS launch webinar">
@@ -681,6 +791,7 @@ footer a{color:var(--blush)}
 </section>
 
 <!-- ============ SERVICES ============ -->
+<svg class="wave" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true" style="background:#FFE6EC"><path d="M0 34 C 200 6 400 62 720 32 S 1240 4 1440 30 V60 H0Z" fill="#2B1B3A"/><path d="M0 34 C 200 6 400 62 720 32 S 1240 4 1440 30" fill="none" stroke="#2B1B3A" stroke-width="2" vector-effect="non-scaling-stroke"/></svg>
 <section class="services" id="services" aria-labelledby="sv-t">
   <div class="wrap">
     <div class="sh reveal"><span class="eyebrow">Services</span><h2 id="sv-t">How I can <em>help your brand</em>.</h2></div>
@@ -696,6 +807,7 @@ footer a{color:var(--blush)}
 </section>
 
 <!-- ============ RESUME ============ -->
+<svg class="wave" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true" style="background:#2B1B3A"><path d="M0 28 C 260 62 520 0 760 30 S 1230 58 1440 26 V60 H0Z" fill="#FFF8EF"/><path d="M0 28 C 260 62 520 0 760 30 S 1230 58 1440 26" fill="none" stroke="#2B1B3A" stroke-width="2" vector-effect="non-scaling-stroke"/></svg>
 <section id="resume" aria-labelledby="rs-t">
   <div class="wrap res">
     <div class="reveal">
@@ -712,12 +824,13 @@ footer a{color:var(--blush)}
 </section>
 
 <!-- ============ CONTACT ============ -->
+<svg class="wave" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true" style="background:transparent"><path d="M0 30 C 180 58 420 4 700 34 S 1200 56 1440 22 V60 H0Z" fill="#FFE9A6"/><path d="M0 30 C 180 58 420 4 700 34 S 1200 56 1440 22" fill="none" stroke="#2B1B3A" stroke-width="2" vector-effect="non-scaling-stroke"/></svg>
 <section class="contact" id="contact" aria-labelledby="ct-t">
   <div class="wrap">
     <span class="eyebrow reveal">Contact</span>
     <h2 id="ct-t" class="reveal" style="margin-top:14px">Let&rsquo;s work <em>together.</em></h2>
     <p class="sub reveal">Have a brand, a campaign, or a role in mind? Send a message and let&rsquo;s talk.</p>
-    <div class="cta-row reveal"><a class="btn dark" href="mailto:nurazizahtasyaputri8@gmail.com?subject=Hello%20Tasya">Email Tasya <svg class="ico" aria-hidden="true"><use href="#i-mail"/></svg></a></div>
+    <div class="cta-row reveal"><a class="btn dark" href="mailto:nurazizahtasyaputri8@gmail.com?subject=Hello%20Tasya">Email Tasya <svg class="ico" aria-hidden="true"><use href="#i-mail"/></svg></a><button class="btn" id="copyMail" type="button">Copy email address</button><span class="copied" id="copyMsg" role="status" aria-live="polite"></span></div>
     <div class="c-grid">
       <a class="c-card reveal" href="mailto:nurazizahtasyaputri8@gmail.com"><span class="bi"><svg class="ico" aria-hidden="true"><use href="#i-mail"/></svg></span><span><small>Email</small><b>nurazizahtasyaputri8@gmail.com</b></span></a>
       <a class="c-card reveal" style="--dl:.06s" href="https://linkedin.com/in/nurazizahtasyaputri" target="_blank" rel="noopener"><span class="bi"><svg class="ico" aria-hidden="true"><use href="#i-in"/></svg></span><span><small>LinkedIn</small><b>Nur Azizah Tasya Putri</b></span></a>
@@ -760,29 +873,30 @@ footer a{color:var(--blush)}
     ['pointerdown', 'keydown'].forEach(ev => window.addEventListener(ev, () => end(true), { once: true }));
     $('#skip').addEventListener('click', () => end(true));
 
-    // 1. ring draws, silhouette fades in
+    // 1. ring draws, silhouette (outline of the SAME portrait) rises inside it
     an($('#ringDraw'), [{ strokeDashoffset: 591 }, { strokeDashoffset: 0 }], { duration: 1100, easing: 'cubic-bezier(.65,0,.25,1)' });
-    an($('#sil'), [{ opacity: 0, transform: 'translateX(-50%) translateY(14%) scale(.94)' }, { opacity: 1, transform: 'translateX(-50%)' }], { duration: 800, delay: 150, easing: 'cubic-bezier(.2,.8,.2,1)' });
+    an($('#silL'), [{ opacity: 0, transform: 'translateY(6%) scale(.97)' }, { opacity: 1, transform: 'none' }], { duration: 800, delay: 200, easing: 'cubic-bezier(.2,.8,.2,1)' });
+    an($('#silL'), [{ filter: 'drop-shadow(0 0 0 rgba(229,91,154,0))' }, { filter: 'drop-shadow(0 0 16px rgba(229,91,154,.85))', offset: .5 }, { filter: 'drop-shadow(0 0 0 rgba(139,111,224,0))' }], { duration: 900, delay: 1000, easing: 'ease-in-out' });
 
-    // 2. reactions pop with spring, then bob
+    // 2. reactions pop with spring
     $$('[data-pop]', intro).forEach((el, i) => {
       const rot = [-8, 7, -5, 4, -6, 6][i % 6];
       an(el, [{ opacity: 0, transform: 'scale(0) rotate(0deg)' }, { opacity: 1, transform: `scale(1.18) rotate(${rot}deg)`, offset: .6 }, { opacity: 1, transform: `scale(1) rotate(${rot}deg)` }], { duration: 560, delay: 650 + i * 130, easing: 'cubic-bezier(.34,1.56,.64,1)' });
     });
-    // follower count ticks up (+144% TikTok followers in 1 year, from her CV)
     const cnt = $('#cnt'), t0 = performance.now() + 900, dur = 1300;
     const tick = now => { const p = Math.min(Math.max((now - t0) / dur, 0), 1); cnt.textContent = '+' + Math.round(144 * (1 - Math.pow(1 - p, 3))) + '%'; if (p < 1) raf = requestAnimationFrame(tick); };
     raf = requestAnimationFrame(tick);
 
-    // 3. silhouette -> real photo, name reveal
-    an($('#sil'), [{ opacity: 1 }, { opacity: 0 }], { duration: 700, delay: 2100, easing: 'ease-in-out', composite: 'replace' });
-    an($('#introFace'), [{ opacity: 0 }, { opacity: 1 }], { duration: 700, delay: 2100, easing: 'ease-in-out' });
-    $$('.mask>span', $('#iName')).forEach((s, i) => an(s, [{ transform: 'translateY(115%)' }, { transform: 'translateY(0)' }], { duration: 800, delay: 2350 + i * 140, easing: 'cubic-bezier(.2,.8,.2,1)' }));
-    // reactions leave
-    $$('[data-pop]', intro).forEach((el, i) => an(el, [{ opacity: 1 }, { opacity: 0, transform: el.style.transform || 'scale(.6)' }], { duration: 300, delay: 2900 + i * 30, composite: 'replace' }));
+    // 3. light sweep: silhouette wipes away top-down and the real portrait is revealed through the same outline
+    const wipe = { duration: 1000, delay: 1900, easing: 'cubic-bezier(.65,0,.35,1)' };
+    an($('#silL'), [{ clipPath: 'inset(0% 0 0 0)' }, { clipPath: 'inset(100% 0 0 0)' }], wipe);
+    an($('#introFace'), [{ clipPath: 'inset(0 0 100% 0)' }, { clipPath: 'inset(0 0 0% 0)' }], wipe);
+    an($('#scan'), [{ opacity: 0, top: '0%' }, { opacity: 1, top: '0%', offset: .06 }, { opacity: 1, top: '100%', offset: .94 }, { opacity: 0, top: '100%' }], wipe);
+    $$('.mask>span', $('#iName')).forEach((s, i) => an(s, [{ transform: 'translateY(115%)' }, { transform: 'translateY(0)' }], { duration: 800, delay: 2700 + i * 140, easing: 'cubic-bezier(.2,.8,.2,1)' }));
+    $$('[data-pop]', intro).forEach((el, i) => an(el, [{ opacity: 1 }, { opacity: 0, transform: el.style.transform || 'scale(.6)' }], { duration: 300, delay: 3250 + i * 30, composite: 'replace' }));
 
     // 4. ring flies into the nav avatar
-    at(3000, () => {
+    at(3600, () => {
       const ring = $('#ringWrap').getBoundingClientRect(), tgt = $('#navAvatar').getBoundingClientRect();
       const s = tgt.width / ring.width, dx = tgt.left + tgt.width / 2 - (ring.left + ring.width / 2), dy = tgt.top + tgt.height / 2 - (ring.top + ring.height / 2);
       an($('#ringWrap'), [{ transform: 'none' }, { transform: `translate(${dx}px,${dy}px) scale(${s})` }], { duration: 800, easing: 'cubic-bezier(.65,0,.25,1)' });
@@ -822,7 +936,7 @@ footer a{color:var(--blush)}
     });
   }), { threshold: .12, rootMargin: '0px 0px -6% 0px' });
   const qa = /qa/.test(location.search);
-  if (noanim || qa) $$('.reveal').forEach(el => el.classList.add('in')); else $$('.reveal').forEach(el => ro.observe(el));
+  if (noanim || qa) $$('.reveal,.rv').forEach(el => el.classList.add('in')); else $$('.reveal,.rv').forEach(el => ro.observe(el));
 
   /* ---------- parallax ---------- */
   if (!reduce) {
@@ -878,7 +992,44 @@ footer a{color:var(--blush)}
     c.addEventListener('click', e => { if (!e.target.closest('a')) show(i); });
     $('h3 button', c).addEventListener('click', () => show(i));
   });
+  cards.forEach(c => { const d = c.dataset; if (d.from !== undefined && d.to) { const mx = Math.max(+d.from, +d.to), ba = document.createElement('div'); ba.className = 'ba'; ba.setAttribute('aria-hidden', 'true'); ba.style.setProperty('--bh', '52px'); ba.innerHTML = [[d.from, d.fl], [d.to, d.tl]].map(([v, l]) => `<div><i style="--h:${Math.max(.04, +v / mx).toFixed(3)}"></i><span>${l}</span></div>`).join(''); c.querySelector('.w-big').after(ba); } });
   show(0);
+
+  /* ---------- web feel: progress, timeline, hero parallax, tilt, magnets, cursor ---------- */
+  const fine = matchMedia('(pointer:fine)').matches;
+  const prog = $('#progress'), feed = $('.feed'); let tk2 = false;
+  const onScroll = () => { tk2 = false; const m = root.scrollHeight - innerHeight; prog.style.transform = `scaleX(${m > 0 ? scrollY / m : 0})`;
+    if (feed) { const r = feed.getBoundingClientRect(); feed.style.setProperty('--p', Math.min(1, Math.max(0, (innerHeight * .65 - r.top) / r.height)).toFixed(3)); } };
+  addEventListener('scroll', () => { if (!tk2) { tk2 = true; requestAnimationFrame(onScroll); } }, { passive: true }); onScroll();
+
+  const eq = $('#eq'); if (eq) eq.innerHTML = Array.from({ length: 44 }, (_, i) => `<i style="--d:${((i * 37) % 11) / 10}s;--a:${(.22 + Math.abs(Math.sin(i * 1.7) * Math.cos(i * .55)) * .75).toFixed(2)}"></i>`).join('');
+
+  const art = $('#heroArt'), hero = $('.hero');
+  if (art && hero && !reduce && fine) {
+    hero.addEventListener('pointermove', e => { const r = hero.getBoundingClientRect(); art.style.setProperty('--px', ((e.clientX - r.left) / r.width * 2 - 1).toFixed(3)); art.style.setProperty('--py', ((e.clientY - r.top) / r.height * 2 - 1).toFixed(3)); });
+    hero.addEventListener('pointerleave', () => { art.style.setProperty('--px', 0); art.style.setProperty('--py', 0); });
+  }
+  if (!reduce && fine) {
+    $$('.tilt').forEach(c => { c.addEventListener('pointermove', e => { const r = c.getBoundingClientRect(); c.style.setProperty('--ry', (((e.clientX - r.left) / r.width - .5) * 8).toFixed(2) + 'deg'); c.style.setProperty('--rx', (-((e.clientY - r.top) / r.height - .5) * 8).toFixed(2) + 'deg'); }); c.addEventListener('pointerleave', () => { c.style.setProperty('--rx', '0deg'); c.style.setProperty('--ry', '0deg'); }); });
+    $$('.btn').forEach(b => { b.addEventListener('pointermove', e => { const r = b.getBoundingClientRect(); b.style.setProperty('--mx', ((e.clientX - r.left - r.width / 2) * .18).toFixed(1) + 'px'); b.style.setProperty('--my', ((e.clientY - r.top - r.height / 2) * .28).toFixed(1) + 'px'); }); b.addEventListener('pointerleave', () => { b.style.removeProperty('--mx'); b.style.removeProperty('--my'); }); });
+    const sv = $('.services'); if (sv) sv.addEventListener('pointermove', e => { const r = sv.getBoundingClientRect(); sv.style.setProperty('--mx', (e.clientX - r.left) + 'px'); sv.style.setProperty('--my', (e.clientY - r.top) + 'px'); });
+    const cur = $('#cursor'); let cx = 0, cy = 0, tx = 0, ty = 0, on = false;
+    addEventListener('pointermove', e => { tx = e.clientX; ty = e.clientY; if (!on) { on = true; cx = tx; cy = ty; cur.classList.add('on'); } });
+    (function loop() { cx += (tx - cx) * .18; cy += (ty - cy) * .18; cur.style.transform = `translate3d(${(cx - 18).toFixed(1)}px,${(cy - 18).toFixed(1)}px,0)`; requestAnimationFrame(loop); })();
+    document.addEventListener('pointerover', e => cur.classList.toggle('hot', !!e.target.closest('a,button,.wcard')));
+  }
+
+  const sw = $('#swap');
+  if (sw && !reduce) { const W = ['Content strategy', 'Short-form video', 'Copywriting', 'KOL campaigns', 'Social analytics']; let k = 0;
+    setInterval(() => { if (document.hidden) return; k = (k + 1) % W.length;
+      sw.animate([{ opacity: 1, transform: 'none' }, { opacity: 0, transform: 'translateY(-60%)' }], { duration: 260, easing: 'ease-in' }).onfinish = () => { sw.textContent = W[k]; sw.animate([{ opacity: 0, transform: 'translateY(60%)' }, { opacity: 1, transform: 'none' }], { duration: 320, easing: 'cubic-bezier(.2,.8,.2,1)' }); }; }, 2400); }
+
+  const msgs = [['+2,700', 'SOZO Instagram, 5 months'], ['38M', 'TikTok views in 1 year'], ['+144%', 'TikTok followers, 70K to 171K'], ['Top 3', 'Creative Department KPIs'], ['+24.7%', 'Altuzs impressions in 5 months']];
+  const cyc = (el, off) => { if (!el) return; let i = off; const set = () => { const m = msgs[i++ % msgs.length]; $('b', el).textContent = m[0]; $('small', el).textContent = m[1]; el.classList.remove('pop'); void el.offsetWidth; el.classList.add('pop'); }; if (!reduce) setInterval(() => { if (!document.hidden) set(); }, 3200); };
+  if (!reduce) { cyc($('#toastA'), 1); setTimeout(() => cyc($('#toastB'), 3), 1600); }
+
+  const cp = $('#copyMail');
+  if (cp) cp.addEventListener('click', async () => { const m = $('#copyMsg'); try { await navigator.clipboard.writeText('nurazizahtasyaputri8@gmail.com'); m.textContent = 'Email copied'; } catch (e) { m.textContent = 'Copy failed. Use the Email button instead.'; } setTimeout(() => m.textContent = '', 2600); });
 
   // QA hook: ?qa=1&at=work -> renders only that section (screenshot helper)
   if (qa) {
@@ -890,7 +1041,7 @@ footer a{color:var(--blush)}
       const keep = document.getElementById(at);
       if (keep) {
         const st = document.createElement('style');
-        st.textContent = '.nav,.hero,.marquee,footer{display:none!important}section:not(#' + at + '){display:none!important}#' + at + '{padding-top:20px}';
+        st.textContent = '.nav,.hero,.marquee,.wave,.progress,.cursor,footer{display:none!important}section:not(#' + at + '){display:none!important}#' + at + '{padding-top:20px}';
         document.head.appendChild(st);
       }
     }
